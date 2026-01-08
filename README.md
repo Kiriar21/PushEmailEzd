@@ -11,7 +11,7 @@ Aplikacja Blazor Server do pobierania emaili i rejestracji ich jako wpływów w 
 
 ```bash
 # Sklonuj repozytorium
-git clone https://github.com/twoje-repo/PushEmailEzd.git
+git clone https://github.com/Kiriar21/PushEmailEzd.git
 cd PushEmailEzd
 
 # Przywróć pakiety i uruchom
