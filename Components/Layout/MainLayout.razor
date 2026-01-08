@@ -1,0 +1,220 @@
+@inherits LayoutComponentBase
+
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Email → EZD PUW</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <style>
+        /* === DARK THEME WITH HIGH CONTRAST === */
+        
+        body {
+            background: linear-gradient(135deg, #0d0d1a 0%, #1a1a2e 50%, #16213e 100%);
+            min-height: 100vh;
+            color: #ffffff;
+        }
+        
+        /* Navbar */
+        .navbar {
+            background: rgba(0, 0, 0, 0.5) !important;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+        }
+        .navbar-brand {
+            color: #ffffff !important;
+            font-weight: 600;
+        }
+        
+        /* Main container */
+        .main-container {
+            padding: 2rem;
+        }
+        
+        /* Cards */
+        .card {
+            background: rgba(20, 25, 40, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+            color: #ffffff;
+        }
+        .card-header {
+            background: rgba(30, 35, 55, 0.95);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+            color: #ffffff;
+            font-weight: 500;
+        }
+        .card-body {
+            color: #ffffff;
+        }
+        
+        /* Tables */
+        .table {
+            color: #ffffff;
+            --bs-table-bg: transparent;
+        }
+        .table thead th {
+            border-color: rgba(255, 255, 255, 0.15);
+            color: #c0c8d8;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.5px;
+            background: rgba(40, 50, 70, 0.5);
+        }
+        .table tbody td {
+            border-color: rgba(255, 255, 255, 0.08);
+            vertical-align: middle;
+            color: #ffffff;
+        }
+        .table tbody tr {
+            background: transparent;
+        }
+        .table-hover tbody tr:hover {
+            background-color: rgba(100, 120, 180, 0.15);
+            color: #ffffff;
+        }
+        .table-success,
+        .table-success td {
+            background-color: rgba(17, 153, 142, 0.25) !important;
+            color: #ffffff !important;
+        }
+        
+        /* Text utilities overrides */
+        .text-muted {
+            color: #a0aec0 !important;
+        }
+        small.text-muted {
+            color: #8899b0 !important;
+        }
+        
+        /* Buttons */
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            padding: 0.6rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            color: #ffffff;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.5);
+            color: #ffffff;
+        }
+        .btn-success {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            border: none;
+            border-radius: 8px;
+            color: #ffffff;
+            font-weight: 600;
+        }
+        .btn-success:hover {
+            color: #ffffff;
+        }
+        .btn-outline-light {
+            border-color: rgba(255, 255, 255, 0.4);
+            color: #ffffff;
+        }
+        .btn-outline-light:hover {
+            background: rgba(255, 255, 255, 0.15);
+            color: #ffffff;
+        }
+        
+        /* Badges */
+        .badge-rpw {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            padding: 0.5rem 0.75rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #ffffff;
+        }
+        .badge-error {
+            background: linear-gradient(135deg, #eb3349 0%, #f45c43 100%);
+            color: #ffffff;
+        }
+        .badge.bg-secondary {
+            background: rgba(100, 120, 150, 0.6) !important;
+            color: #ffffff;
+        }
+        
+        /* Forms */
+        .form-check-input {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+        .form-check-input:checked {
+            background-color: #667eea;
+            border-color: #667eea;
+        }
+        
+        /* Alerts */
+        .alert-warning {
+            background: rgba(255, 193, 7, 0.2);
+            border-color: rgba(255, 193, 7, 0.4);
+            color: #ffd54f;
+        }
+        .alert-info {
+            background: rgba(13, 202, 240, 0.15);
+            border-color: rgba(13, 202, 240, 0.3);
+            color: #7dd3fc;
+        }
+        .alert-success {
+            background: rgba(25, 135, 84, 0.25);
+            border-color: rgba(25, 135, 84, 0.4);
+            color: #6ee7b7;
+        }
+        .alert-danger {
+            background: rgba(220, 53, 69, 0.25);
+            border-color: rgba(220, 53, 69, 0.4);
+            color: #fca5a5;
+        }
+        .alert code {
+            color: #fbbf24;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 0.15rem 0.4rem;
+            border-radius: 4px;
+        }
+        
+        /* Spinner */
+        .spinner-border-sm {
+            width: 1rem;
+            height: 1rem;
+        }
+        
+        /* Headings */
+        h1, h2, h3, h4, h5, h6,
+        .h1, .h2, .h3, .h4, .h5, .h6 {
+            color: #ffffff;
+        }
+        
+        /* Links */
+        a {
+            color: #93c5fd;
+        }
+        a:hover {
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">
+                <i class="bi bi-envelope-arrow-up me-2"></i>
+                Email → EZD PUW
+            </a>
+        </div>
+    </nav>
+
+    <main class="main-container">
+        @Body
+    </main>
+</body>
+</html>
+

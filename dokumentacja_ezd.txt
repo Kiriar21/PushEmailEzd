@@ -1,0 +1,2989 @@
+<xs:schema xmlns:tns="http://ezd.gov.pl/" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://ezd.gov.pl/">
+<script src="chrome-extension://mfidniedemcgceagapgdekdbmanojomk/js/elephant.js"/>
+<xs:import namespace="http://schemas.datacontract.org/2004/07/ezd.Data.Enums"/>
+<xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+<xs:import namespace="http://schemas.datacontract.org/2004/07/ezd.Data.Domain"/>
+<xs:import namespace="http://schemas.datacontract.org/2004/07/ezd.Data.Integration"/>
+<xs:complexType name="AddinPobierzIdentyfikatoryDokumentowDoDruku">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:RequestBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="PrintToken" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="AddinPobierzIdentyfikatoryDokumentowDoDruku" nillable="true" type="tns:AddinPobierzIdentyfikatoryDokumentowDoDruku"/>
+<xs:complexType name="RequestBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="CID" type="xs:int"/>
+<xs:element minOccurs="0" name="IdPracownikaWlasciciela" type="xs:int"/>
+<xs:element minOccurs="0" name="IdStanowiskaWlasciciela" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="RequestBaseDto" nillable="true" type="tns:RequestBaseDto"/>
+<xs:complexType name="AddinUtworzTokenDoDruku">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:RequestBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="IdKoszulki" type="xs:int"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="AddinUtworzTokenDoDruku" nillable="true" type="tns:AddinUtworzTokenDoDruku"/>
+<xs:complexType name="AddinPobierzZalcznikDoDruku">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:RequestBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="IdDokumentu" type="xs:long"/>
+<xs:element minOccurs="0" name="PrintToken" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="AddinPobierzZalcznikDoDruku" nillable="true" type="tns:AddinPobierzZalcznikDoDruku"/>
+<xs:complexType name="AddinUtworzTokenEdycjiPliku">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:RequestBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="IdDokumentu" type="xs:long"/>
+<xs:element minOccurs="0" name="IdZalacznika" type="xs:int"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="AddinUtworzTokenEdycjiPliku" nillable="true" type="tns:AddinUtworzTokenEdycjiPliku"/>
+<xs:complexType name="WyszukajAdresataWplywu">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:RequestBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="Budynek" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="DataRejestracjiDo" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="DataRejestracjiOd" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Email" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="KodPocztowy" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Lokal" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Miejscowosc" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="NadawcaImie" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="NadawcaNazwa" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="NadawcaNazwisko" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Nip" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="NumerRpw" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Pesel" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Regon" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Sygnatura" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Ulica" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="WyszukajAdresataWplywu" nillable="true" type="tns:WyszukajAdresataWplywu"/>
+<xs:complexType name="AdresatPobierz">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:RequestBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="IdAdresata" type="xs:int"/>
+<xs:element minOccurs="0" name="IdAdresu" type="xs:int"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="AdresatPobierz" nillable="true" type="tns:AdresatPobierz"/>
+<xs:complexType name="AdresatDodaj">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:RequestBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="AdresElektronicznychDoreczen" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AdresEmail" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AdresOdpowiedziEpuap" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Atrybut1" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Atrybut10" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Atrybut2" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Atrybut3" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Atrybut4" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Atrybut5" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Atrybut6" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Atrybut7" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Atrybut8" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Atrybut9" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Blokada" type="xs:boolean"/>
+<xs:element minOccurs="0" name="IdentyfikatorEpuap" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Imie" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="KodPocztowy" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Kraj" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Miejscowosc" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="NIP" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Nazwa" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Nazwisko" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="NumerBudynku" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="NumerLokalu" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="PESEL" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Poczta" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="REGON" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="SkrytkaPocztowa" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="SprawdzCzyIstnieje" type="xs:boolean"/>
+<xs:element minOccurs="0" name="Typ" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Ulica" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="AdresatDodaj" nillable="true" type="tns:AdresatDodaj"/>
+<xs:complexType name="AdresatWyszukaj">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:RequestBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="AdresatAdresElektronicznychDoreczen" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AdresatAdresKodPocztowy" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AdresatAdresKraj" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AdresatAdresMiejscowosc" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AdresatAdresNumerDomu" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AdresatAdresNumerLokalu" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AdresatAdresOdpowiedzi_ePUPAP" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AdresatAdresPoczta" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AdresatAdresSkrytkaPocztowa" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AdresatAdresUlica" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AdresatEmail" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AdresatIdentyfikator_ePUPAP" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AdresatImie" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AdresatNazwa" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AdresatNazwisko" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AdresatNip" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AdresatPesel" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AdresatRegon" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AdresatTelefon" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AdresatTyp" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="AdresatWyszukaj" nillable="true" type="tns:AdresatWyszukaj"/>
+<xs:complexType name="UstawWidokPrzekaz">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:RequestBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="IdDokumentu" type="xs:long"/>
+<xs:element minOccurs="0" name="IdFormularza" type="xs:int"/>
+<xs:element minOccurs="0" name="IdKoszulki" type="xs:int"/>
+<xs:element minOccurs="0" name="IdPracownikaDocelowego" type="xs:int"/>
+<xs:element minOccurs="0" name="IdPracownikaZrodlowego" type="xs:int"/>
+<xs:element minOccurs="0" name="IdStanowiskaDocelowego" type="xs:int"/>
+<xs:element minOccurs="0" name="IdStanowiskaZrodlowego" type="xs:int"/>
+<xs:element minOccurs="0" name="Widok" type="xs:int"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="UstawWidokPrzekaz" nillable="true" type="tns:UstawWidokPrzekaz"/>
+<xs:complexType name="UstawWidokFormularza">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:RequestBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="IdFormularza" type="xs:int"/>
+<xs:element minOccurs="0" name="Widok" type="xs:int"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="UstawWidokFormularza" nillable="true" type="tns:UstawWidokFormularza"/>
+<xs:complexType name="DokumentLokalizacja">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:RequestBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="Identyfikator" type="xs:int"/>
+<xs:element minOccurs="0" name="IdentyfikatorDokumentu" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="lokalizacja" nillable="true" type="tns:LokalizacjaDokumentuTypeDto"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="DokumentLokalizacja" nillable="true" type="tns:DokumentLokalizacja"/>
+<xs:complexType name="LokalizacjaDokumentuTypeDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="IdZalacznika" type="xs:int"/>
+<xs:element minOccurs="0" name="IdentyfikatorKontenera" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="IdentyfikatorZawartosci" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="NazwaZawartosci" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="LokalizacjaDokumentuTypeDto" nillable="true" type="tns:LokalizacjaDokumentuTypeDto"/>
+<xs:complexType name="AktualizujDokument">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:RequestBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="Dokument" nillable="true" type="tns:DokumentSystemowyTypeDto"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="AktualizujDokument" nillable="true" type="tns:AktualizujDokument"/>
+<xs:complexType name="DokumentSystemowyTypeDto">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:DokumentTypeDto">
+<xs:sequence/>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="DokumentSystemowyTypeDto" nillable="true" type="tns:DokumentSystemowyTypeDto"/>
+<xs:complexType name="DokumentTypeDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="Atrybuty" nillable="true" type="tns:ArrayOfAtrybutObiektuTypeDto"/>
+<xs:element minOccurs="0" name="DataDokumentu" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="DataUtworzenia" nillable="true" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="Dostep" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Identyfikator" nillable="true" type="tns:WskazanieDokumentuDto"/>
+<xs:element minOccurs="0" name="Lokalizacja" nillable="true" type="tns:LokalizacjaDokumentuTypeDto"/>
+<xs:element minOccurs="0" name="MetaBrakDaty" nillable="true" type="xs:boolean"/>
+<xs:element minOccurs="0" name="MetaBrakZnaku" nillable="true" type="xs:boolean"/>
+<xs:element minOccurs="0" name="Metadane" type="xs:boolean"/>
+<xs:element minOccurs="0" name="Nazwa" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Podpis" nillable="true" type="tns:ArrayOfPodpisTypeDto"/>
+<xs:element minOccurs="0" name="PracownikUtworzenia" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Rodzaj" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Sklad" nillable="true" type="tns:ArrayOfDokumentSkladuDto"/>
+<xs:element minOccurs="0" name="Sygnatura" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Tytul" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="DokumentTypeDto" nillable="true" type="tns:DokumentTypeDto"/>
+<xs:complexType name="ArrayOfAtrybutObiektuTypeDto">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="unbounded" name="AtrybutObiektuTypeDto" nillable="true" type="tns:AtrybutObiektuTypeDto"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="ArrayOfAtrybutObiektuTypeDto" nillable="true" type="tns:ArrayOfAtrybutObiektuTypeDto"/>
+<xs:complexType name="AtrybutObiektuTypeDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="Klucz" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Typ" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Wartosc" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="AtrybutObiektuTypeDto" nillable="true" type="tns:AtrybutObiektuTypeDto"/>
+<xs:complexType name="WskazanieDokumentuDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="Identyfikator" type="xs:long"/>
+<xs:element minOccurs="0" name="IdentyfikatorDokumentu" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="WskazanieDokumentuDto" nillable="true" type="tns:WskazanieDokumentuDto"/>
+<xs:complexType name="ArrayOfPodpisTypeDto">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="unbounded" name="PodpisTypeDto" nillable="true" type="tns:PodpisTypeDto"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="ArrayOfPodpisTypeDto" nillable="true" type="tns:ArrayOfPodpisTypeDto"/>
+<xs:complexType name="PodpisTypeDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="DataPodpisu" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="SubjectPodpisu" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="PodpisTypeDto" nillable="true" type="tns:PodpisTypeDto"/>
+<xs:complexType name="ArrayOfDokumentSkladuDto">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="unbounded" name="DokumentSkladuDto" nillable="true" type="tns:DokumentSkladuDto"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="ArrayOfDokumentSkladuDto" nillable="true" type="tns:ArrayOfDokumentSkladuDto"/>
+<xs:complexType name="DokumentSkladuDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="Atrybuty" nillable="true" type="tns:ArrayOfAtrybutObiektuTypeDto"/>
+<xs:element minOccurs="0" name="DataUtworzenia" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="Identyfikator" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Lokalizacja" nillable="true" type="tns:LokalizacjaDokumentuTypeDto"/>
+<xs:element minOccurs="0" name="Nazwa" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="PracownikUtworzenia" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="DokumentSkladuDto" nillable="true" type="tns:DokumentSkladuDto"/>
+<xs:complexType name="DokumentWplywajacyTypeDto">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:DokumentTypeDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="AtrybutyWplywu" nillable="true" type="tns:ArrayOfAtrybutObiektuTypeDto"/>
+<xs:element minOccurs="0" name="DataNadania" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="DataWplywu" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="IdentyfikatorWplywu" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Nadawca" nillable="true" type="tns:AdresatTypeDto"/>
+<xs:element minOccurs="0" name="NumerNadania" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="SposobDostarczenia" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="ZnakWplywu" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="DokumentWplywajacyTypeDto" nillable="true" type="tns:DokumentWplywajacyTypeDto"/>
+<xs:complexType name="AdresatTypeDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="AdresatAdresId" type="xs:int"/>
+<xs:element minOccurs="0" name="AdresatAdresOrginalId" type="xs:int"/>
+<xs:element minOccurs="0" name="AdresatId" type="xs:int"/>
+<xs:element minOccurs="0" name="AdresatOrginalId" type="xs:int"/>
+<xs:element minOccurs="0" name="Atrybut1" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Atrybut10" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Atrybut2" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Atrybut3" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Atrybut4" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Atrybut5" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Atrybut6" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Atrybut7" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Atrybut8" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Atrybut9" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AtrybutyAdresata" nillable="true" type="tns:ArrayOfAtrybutObiektuTypeDto"/>
+<xs:element minOccurs="0" name="AtrybutyAdresu" nillable="true" type="tns:ArrayOfAtrybutObiektuTypeDto"/>
+<xs:element minOccurs="0" name="Imie" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="KodPocztowy" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Kraj" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Miejscowosc" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Nazwa" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Nazwisko" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="NumerBudynku" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="NumerLokalu" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Poczta" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Ulica" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="AdresatTypeDto" nillable="true" type="tns:AdresatTypeDto"/>
+<xs:complexType name="RejestrujDokument">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:RequestBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="Dokument" nillable="true" type="tns:DokumentSystemowyTypeDto"/>
+<xs:element minOccurs="0" name="Koszulka" nillable="true" type="tns:WskazanieKoszulkiDto"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="RejestrujDokument" nillable="true" type="tns:RejestrujDokument"/>
+<xs:complexType name="WskazanieKoszulkiDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="IdKoszulki" type="xs:int"/>
+<xs:element minOccurs="0" name="IdSprawy" type="xs:int"/>
+<xs:element minOccurs="0" name="ZnakSprawy" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="WskazanieKoszulkiDto" nillable="true" type="tns:WskazanieKoszulkiDto"/>
+<xs:complexType name="AkceptujDokument">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:RequestBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="Dokument" nillable="true" type="tns:WskazanieDokumentuDto"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="AkceptujDokument" nillable="true" type="tns:AkceptujDokument"/>
+<xs:complexType name="PobierzMetadaneDokumentu">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:RequestBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="Identyfikator" type="xs:long"/>
+<xs:element minOccurs="0" name="PobierzPodpisy" nillable="true" type="xs:boolean"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="PobierzMetadaneDokumentu" nillable="true" type="tns:PobierzMetadaneDokumentu"/>
+<xs:complexType name="PobierzOznaczoneDokumenty">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:RequestBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="DataOznaczeniaDo" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="DataOznaczeniaOd" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Oznaczenie" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Pobrane" type="xs:boolean"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="PobierzOznaczoneDokumenty" nillable="true" type="tns:PobierzOznaczoneDokumenty"/>
+<xs:complexType name="DokumentPobierz">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:RequestBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="DokumentId" type="xs:long"/>
+<xs:element minOccurs="0" name="Oznaczenie" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="DokumentPobierz" nillable="true" type="tns:DokumentPobierz"/>
+<xs:complexType name="DokumentDodaj">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:RequestBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="Dane" nillable="true" type="xs:base64Binary"/>
+<xs:element minOccurs="0" name="Dostep" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="EpismoZalaczniki" type="xs:boolean"/>
+<xs:element minOccurs="0" name="KoszulkaId" type="xs:int"/>
+<xs:element minOccurs="0" name="Metadane" type="xs:boolean"/>
+<xs:element minOccurs="0" name="Nazwa" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Oznaczenie" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Rodzaj" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="DokumentDodaj" nillable="true" type="tns:DokumentDodaj"/>
+<xs:complexType name="DokumentMonit">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:RequestBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="IdDokumentu" type="xs:long"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="DokumentMonit" nillable="true" type="tns:DokumentMonit"/>
+<xs:complexType name="NotatkaDodaj">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:RequestBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="KoszulkaId" type="xs:int"/>
+<xs:element minOccurs="0" name="Nazwa" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Tresc" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="NotatkaDodaj" nillable="true" type="tns:NotatkaDodaj"/>
+<xs:complexType name="PobierzJednostke">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:RequestBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="IdentyfikatorJednostki" type="xs:int"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="PobierzJednostke" nillable="true" type="tns:PobierzJednostke"/>
+<xs:complexType name="PobierzWszystkieJednostki">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:RequestBaseDto">
+<xs:sequence/>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="PobierzWszystkieJednostki" nillable="true" type="tns:PobierzWszystkieJednostki"/>
+<xs:complexType name="UtworzKoszulke">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:RequestBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="Nazwa" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="UtworzKoszulke" nillable="true" type="tns:UtworzKoszulke"/>
+<xs:complexType name="UtworzFormularzKoszulki">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:RequestBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="IdKoszulki" type="xs:int"/>
+<xs:element minOccurs="0" name="NazwaFormularza" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="UtworzFormularzKoszulki" nillable="true" type="tns:UtworzFormularzKoszulki"/>
+<xs:complexType name="ZakonczKoszulke">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:RequestBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="IdKoszulki" type="xs:int"/>
+<xs:element minOccurs="0" name="Koszulka" nillable="true" type="tns:WskazanieKoszulkiDto"/>
+<xs:element minOccurs="0" name="PismoNieStanowiAktSprawyKlasa" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Rocznik" type="xs:int"/>
+<xs:element minOccurs="0" name="SprawaProwadzonaPozaEzd" type="xs:boolean"/>
+<xs:element minOccurs="0" name="ZwykleZakonczenie" type="xs:boolean"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="ZakonczKoszulke" nillable="true" type="tns:ZakonczKoszulke"/>
+<xs:complexType name="PrzekazKoszulke">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:RequestBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="IdKoszulki" type="xs:int"/>
+<xs:element minOccurs="0" name="IdPracownikaDocelowego" type="xs:int"/>
+<xs:element minOccurs="0" name="IdPracownikaZrodlowego" type="xs:int"/>
+<xs:element minOccurs="0" name="IdStanowiskaDocelowego" type="xs:int"/>
+<xs:element minOccurs="0" name="IdStanowiskaZrodlowego" type="xs:int"/>
+<xs:element minOccurs="0" name="Uwagi" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="ZnakPisma" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="PrzekazKoszulke" nillable="true" type="tns:PrzekazKoszulke"/>
+<xs:complexType name="AktualizujKoszulke">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:RequestBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="koszulka" nillable="true" type="tns:PismoDto"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="AktualizujKoszulke" nillable="true" type="tns:AktualizujKoszulke"/>
+<xs:complexType name="PismoDto">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:ResponseBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="CzyZarchiwizowany" type="xs:boolean"/>
+<xs:element minOccurs="0" name="DataUtworzenia" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="DataZakonczenia" nillable="true" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="DekretacjaEtapyAutor" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="ID" type="xs:int"/>
+<xs:element minOccurs="0" name="KoszulkaWrazliwa" type="xs:boolean"/>
+<xs:element minOccurs="0" name="KoszulkaWrazliwaData" nillable="true" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="Nazwa" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="ProwadzacyStanowisko" nillable="true" type="tns:StanowiskoDto"/>
+<xs:element minOccurs="0" name="RejestrSpraw" nillable="true" type="tns:RejestrSprawExtendedResponse"/>
+<xs:element minOccurs="0" name="Rodzaj" nillable="true" type="xs:int"/>
+<xs:element minOccurs="0" name="TerminPisma" nillable="true" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="TworcaStanowisko" nillable="true" type="tns:StanowiskoDto"/>
+<xs:element minOccurs="0" name="WazneDo" nillable="true" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="ZakonczeniePowod" nillable="true" type="xs:int"/>
+<xs:element minOccurs="0" name="Zakonczone" type="xs:boolean"/>
+<xs:element minOccurs="0" name="Zawieszone" type="xs:boolean"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="PismoDto" nillable="true" type="tns:PismoDto"/>
+<xs:complexType name="ResponseBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="CID" type="xs:int"/>
+<xs:element minOccurs="0" name="Odpowiedz" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="ResultMessage" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="ResultStatus" type="xs:int"/>
+<xs:element minOccurs="0" name="Token" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="TypOdpowiedzi" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="ResponseBaseDto" nillable="true" type="tns:ResponseBaseDto"/>
+<xs:complexType name="StanowiskoDto">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:ResponseBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="Id" type="xs:int"/>
+<xs:element minOccurs="0" name="IdJednostki" type="xs:int"/>
+<xs:element minOccurs="0" name="IdPracownika" nillable="true" type="xs:int"/>
+<xs:element minOccurs="0" name="Nazwa" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="StanowiskoDto" nillable="true" type="tns:StanowiskoDto"/>
+<xs:complexType name="RejestrSprawExtendedResponse">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:RejestrSprawResponseBase">
+<xs:sequence>
+<xs:element minOccurs="0" name="RWANazwa" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="RWARok" type="xs:int"/>
+<xs:element minOccurs="0" name="RWASymbol" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="RejestrSprawExtendedResponse" nillable="true" type="tns:RejestrSprawExtendedResponse"/>
+<xs:complexType name="RejestrSprawResponseBase">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:ResponseBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="ArchiwumStatus" nillable="true" type="xs:int"/>
+<xs:element minOccurs="0" name="DataPisma" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="DataRejestracji" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="DataRozpoczecia" nillable="true" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="DataZakonczenia" nillable="true" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="FixedId" nillable="true" type="xs:int"/>
+<xs:element minOccurs="0" name="Id" type="xs:int"/>
+<xs:element minOccurs="0" name="IdDokumentuMeta" nillable="true" type="xs:long"/>
+<xs:element minOccurs="0" name="IdDokumentuWszczynajacego" nillable="true" type="xs:long"/>
+<xs:element minOccurs="0" name="IdEtapuUdostepnienia" nillable="true" type="xs:int"/>
+<xs:element minOccurs="0" name="IdPisma" type="xs:int"/>
+<xs:element minOccurs="0" name="IdProwadzacy" type="xs:int"/>
+<xs:element minOccurs="0" name="IdTypSprawy" nillable="true" type="xs:int"/>
+<xs:element minOccurs="0" name="IdWydzial" type="xs:int"/>
+<xs:element minOccurs="0" name="IdWydzialOrginal" type="xs:int"/>
+<xs:element minOccurs="0" name="Inicjator" nillable="true" type="tns:PracownikDto"/>
+<xs:element minOccurs="0" name="InicjatorId" nillable="true" type="xs:int"/>
+<xs:element minOccurs="0" name="KategoriaArchiwalna" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="LP" type="xs:int"/>
+<xs:element minOccurs="0" name="OdKogo" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Pismo" nillable="true" type="tns:PismoDto"/>
+<xs:element minOccurs="0" name="PoprzedniZnakSprawy" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Prowadzacy" nillable="true" type="tns:PracownikDto"/>
+<xs:element minOccurs="0" name="Rok" type="xs:int"/>
+<xs:element minOccurs="0" name="Rwa" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="RwaId" type="xs:int"/>
+<xs:element minOccurs="0" name="RwaParentCode" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="RwaParentId" nillable="true" type="xs:int"/>
+<xs:element minOccurs="0" name="TerminSprawy" nillable="true" type="xs:dateTime"/>
+<xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/ezd.Data.Enums" minOccurs="0" name="TypProwadzenia" type="q1:TypProwadzenia"/>
+<xs:element minOccurs="0" name="TypUsuniecia" nillable="true" type="xs:int"/>
+<xs:element minOccurs="0" name="Uwagi" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Wydzial" nillable="true" type="tns:JednostkaDto"/>
+<xs:element minOccurs="0" name="WydzialOrginal" nillable="true" type="tns:JednostkaDto"/>
+<xs:element minOccurs="0" name="Znak" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="ZnakPisma" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="RejestrSprawResponseBase" nillable="true" type="tns:RejestrSprawResponseBase"/>
+<xs:complexType name="PracownikDto">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:ResponseBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="ActiveDirectory" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="ActiveDirectoryPrincipal" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="ActiveDirectorySID" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Aktywny" type="xs:boolean"/>
+<xs:element minOccurs="0" name="Atrybut1" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Atrybut2" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Atrybut3" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Atrybut4" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Atrybut5" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Atrybut6" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="DataUsuniecia" nillable="true" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="DataUtworzenia" nillable="true" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="DataZmianyHasla" nillable="true" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="DisplayName" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="DomyslnyCert" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="DrukarkaKodow" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Email" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="ID" type="xs:int"/>
+<xs:element minOccurs="0" name="ID_App" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="IdAplikacji" type="xs:int"/>
+<xs:element minOccurs="0" name="IdAplikacjiAutoryzacji" nillable="true" type="xs:int"/>
+<xs:element minOccurs="0" name="IdInstytucjiAutoryzacji" nillable="true" type="xs:int"/>
+<xs:element minOccurs="0" name="IdJednostki" type="xs:int"/>
+<xs:element minOccurs="0" name="IdJednostkiOrginal" type="xs:int"/>
+<xs:element minOccurs="0" name="IdOryginal" type="xs:int"/>
+<xs:element minOccurs="0" name="IdPracownikaAutoryzacji" nillable="true" type="xs:int"/>
+<xs:element minOccurs="0" name="IdRoliPrzelozonej" nillable="true" type="xs:int"/>
+<xs:element minOccurs="0" name="IdStanowiska" nillable="true" type="xs:int"/>
+<xs:element minOccurs="0" name="IdStanowiskaAutoryzacji" nillable="true" type="xs:int"/>
+<xs:element minOccurs="0" name="IdStanowiskaOrginal" nillable="true" type="xs:int"/>
+<xs:element minOccurs="0" name="IdWydzialu" nillable="true" type="xs:int"/>
+<xs:element minOccurs="0" name="IdWydzialuOrginal" nillable="true" type="xs:int"/>
+<xs:element minOccurs="0" name="Imie" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Inicjaly" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Jednostka" nillable="true" type="tns:JednostkaDto"/>
+<xs:element minOccurs="0" name="JednostkaNazwa" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="JednostkaOrginal" nillable="true" type="tns:JednostkaDto"/>
+<xs:element minOccurs="0" name="JednostkaSymbol" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Login" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="ModulIntegracjaWidocznosc" type="xs:boolean"/>
+<xs:element minOccurs="0" name="Nazwisko" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Order" type="xs:int"/>
+<xs:element minOccurs="0" name="OstatniSkrotPBI" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="PoprzednieHaslo" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="SortOrder" type="xs:int"/>
+<xs:element minOccurs="0" name="Stanowisko" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="SystemInfo" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Systemowy" type="xs:boolean"/>
+<xs:element minOccurs="0" name="Ukryty" type="xs:boolean"/>
+<xs:element minOccurs="0" name="Unused1" type="xs:boolean"/>
+<xs:element minOccurs="0" name="Ustawienia" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="WazneDo" nillable="true" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="Wydzial" nillable="true" type="tns:JednostkaDto"/>
+<xs:element minOccurs="0" name="WydzialOrginal" nillable="true" type="tns:JednostkaDto"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="PracownikDto" nillable="true" type="tns:PracownikDto"/>
+<xs:complexType name="JednostkaDto">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:ResponseBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="Aktywny" type="xs:boolean"/>
+<xs:element minOccurs="0" name="Atrybut1" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Atrybut2" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Atrybut3" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="DataDodania" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="ID" type="xs:int"/>
+<xs:element minOccurs="0" name="IdNadrzedne" nillable="true" type="xs:int"/>
+<xs:element minOccurs="0" name="IdPoprzedniego" nillable="true" type="xs:int"/>
+<xs:element minOccurs="0" name="IdTypJednostki" type="xs:int"/>
+<xs:element minOccurs="0" name="IdWydzialu" nillable="true" type="xs:int"/>
+<xs:element minOccurs="0" name="IdWydzialuOrginal" nillable="true" type="xs:int"/>
+<xs:element minOccurs="0" name="Nazwa" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Opis" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="SortOrder" type="xs:int"/>
+<xs:element minOccurs="0" name="Symbol" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="JednostkaDto" nillable="true" type="tns:JednostkaDto"/>
+<xs:complexType name="PobierzKoszulke">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:RequestBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="Koszulka" nillable="true" type="tns:WskazanieKoszulkiDto"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="PobierzKoszulke" nillable="true" type="tns:PobierzKoszulke"/>
+<xs:complexType name="PobierzKoszulki">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:RequestBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="CzescPartii" type="xs:int"/>
+<xs:element minOccurs="0" name="CzySprawa" nillable="true" type="xs:boolean"/>
+<xs:element minOccurs="0" name="DataUtworzenia" nillable="true" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="WielkoscPartii" type="xs:int"/>
+<xs:element minOccurs="0" name="Zakonczone" type="xs:boolean"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="PobierzKoszulki" nillable="true" type="tns:PobierzKoszulki"/>
+<xs:complexType name="KoszulkiStatus">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:RequestBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="IdPracownika" type="xs:int"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="KoszulkiStatus" nillable="true" type="tns:KoszulkiStatus"/>
+<xs:complexType name="KoszulkaListaDokumentow">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:RequestBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="IdKoszulki" type="xs:int"/>
+<xs:element minOccurs="0" name="IdSprawy" type="xs:int"/>
+<xs:element minOccurs="0" name="Obieg" type="xs:boolean"/>
+<xs:element minOccurs="0" name="ZnakSprawy" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="KoszulkaListaDokumentow" nillable="true" type="tns:KoszulkaListaDokumentow"/>
+<xs:complexType name="PobierzKoszulkeRejestry">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:RequestBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="Koszulka" nillable="true" type="tns:WskazanieKoszulkiDto"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="PobierzKoszulkeRejestry" nillable="true" type="tns:PobierzKoszulkeRejestry"/>
+<xs:complexType name="UdostepnijKoszulke">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:RequestBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="CzyPilne" type="xs:boolean"/>
+<xs:element minOccurs="0" name="IdKoszulki" type="xs:int"/>
+<xs:element minOccurs="0" name="IdPracownika" type="xs:int"/>
+<xs:element minOccurs="0" name="RejestrPismWewnetrznych" type="xs:boolean"/>
+<xs:element minOccurs="0" name="Termin" nillable="true" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="UdostepnianeDokumenty" nillable="true" type="tns:ArrayOfUdostepnionyDokument"/>
+<xs:element minOccurs="0" name="Uwagi" nillable="true" type="xs:string"/>
+<xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="WybraniPracownicyId" nillable="true" type="q2:ArrayOfint"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="UdostepnijKoszulke" nillable="true" type="tns:UdostepnijKoszulke"/>
+<xs:complexType name="ArrayOfUdostepnionyDokument">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="unbounded" name="UdostepnionyDokument" nillable="true" type="tns:UdostepnionyDokument"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="ArrayOfUdostepnionyDokument" nillable="true" type="tns:ArrayOfUdostepnionyDokument"/>
+<xs:complexType name="UdostepnionyDokument">
+<xs:sequence>
+<xs:element minOccurs="0" name="IdDokumentu" type="xs:long"/>
+<xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/ezd.Data.Enums" minOccurs="0" name="Tryb" type="q3:TrybUdostepnienia"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="UdostepnionyDokument" nillable="true" type="tns:UdostepnionyDokument"/>
+<xs:complexType name="PowiazKoszulke">
+<xs:sequence>
+<xs:element minOccurs="0" name="IdKoszulki" type="xs:int"/>
+<xs:element minOccurs="0" name="IdKoszulkiPowiazywanej" type="xs:int"/>
+<xs:element minOccurs="0" name="IdPracownika" type="xs:int"/>
+<xs:element minOccurs="0" name="RodzajPowiazania" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="PowiazKoszulke" nillable="true" type="tns:PowiazKoszulke"/>
+<xs:complexType name="WznowKoszulke">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:RequestBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="IdKoszulki" type="xs:int"/>
+<xs:element minOccurs="0" name="IdPracownika" type="xs:int"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="WznowKoszulke" nillable="true" type="tns:WznowKoszulke"/>
+<xs:complexType name="AktualizujAtrybutyKoszulki">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:RequestBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="Atrybuty" nillable="true" type="tns:ArrayOfAtrybutObiektuTypeDto"/>
+<xs:element minOccurs="0" name="IdKoszulki" type="xs:int"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="AktualizujAtrybutyKoszulki" nillable="true" type="tns:AktualizujAtrybutyKoszulki"/>
+<xs:complexType name="KopiujKoszulke">
+<xs:sequence>
+<xs:element minOccurs="0" name="IdKoszulki" type="xs:int"/>
+<xs:element minOccurs="0" name="IdPracownikaDekretacji" type="xs:int"/>
+<xs:element xmlns:q4="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="IdsDokumenty" nillable="true" type="q4:ArrayOflong"/>
+<xs:element xmlns:q5="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="IdsPracownicy" nillable="true" type="q5:ArrayOfint"/>
+<xs:element minOccurs="0" name="Uwagi" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="KopiujKoszulke" nillable="true" type="tns:KopiujKoszulke"/>
+<xs:complexType name="PrzekazKoszulkeWgSzablonu">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:RequestBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="IdKoszulki" type="xs:int"/>
+<xs:element minOccurs="0" name="IdPracownikaZrodlowego" type="xs:int"/>
+<xs:element minOccurs="0" name="IdSzablonuObiegu" type="xs:int"/>
+<xs:element minOccurs="0" name="Pilne" nillable="true" type="xs:boolean"/>
+<xs:element minOccurs="0" name="Termin" nillable="true" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="Uwagi" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="PrzekazKoszulkeWgSzablonu" nillable="true" type="tns:PrzekazKoszulkeWgSzablonu"/>
+<xs:complexType name="ImportujPaczkeMigracyjnaRequest">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:RequestBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="Dane" nillable="true" type="xs:base64Binary"/>
+<xs:element minOccurs="0" name="Nazwa" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="ImportujPaczkeMigracyjnaRequest" nillable="true" type="tns:ImportujPaczkeMigracyjnaRequest"/>
+<xs:complexType name="PodmiotyPismaPobierz">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:RequestBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="IdPisma" type="xs:int"/>
+<xs:element minOccurs="0" name="ZnakSprawy" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="PodmiotyPismaPobierz" nillable="true" type="tns:PodmiotyPismaPobierz"/>
+<xs:complexType name="PodmiotPismaDodaj">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:RequestBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="Elektroniczny" nillable="true" type="xs:boolean"/>
+<xs:element minOccurs="0" name="Grupa" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="IdAdresata" type="xs:int"/>
+<xs:element minOccurs="0" name="IdPisma" type="xs:int"/>
+<xs:element minOccurs="0" name="IdUzytkownika" type="xs:int"/>
+<xs:element minOccurs="0" name="Rola" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Uwagi" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="PodmiotPismaDodaj" nillable="true" type="tns:PodmiotPismaDodaj"/>
+<xs:complexType name="AktualizujMetadaneWplywu">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:RequestBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="AdresMailFax" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AdresatAdresID" type="xs:int"/>
+<xs:element minOccurs="0" name="AdresatID" type="xs:int"/>
+<xs:element minOccurs="0" name="DataNadania" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="IdWplywu" type="xs:int"/>
+<xs:element minOccurs="0" name="LiczbaZalacznikow" type="xs:int"/>
+<xs:element minOccurs="0" name="NumerNadania" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Uwagi" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="AktualizujMetadaneWplywu" nillable="true" type="tns:AktualizujMetadaneWplywu"/>
+<xs:complexType name="RejestrujWplyw">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:RequestBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="AdresMailFax" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AdresatAdresID" type="xs:int"/>
+<xs:element minOccurs="0" name="AdresatAdresKodPocztowy" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AdresatAdresKraj" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AdresatAdresMiejscowosc" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AdresatAdresNumerDomu" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AdresatAdresNumerLokalu" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AdresatAdresOdpowiedzi_ePUPAP" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AdresatAdresPoczta" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AdresatAdresSkrytkaPocztowa" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AdresatAdresUlica" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AdresatEmail" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AdresatID" type="xs:int"/>
+<xs:element minOccurs="0" name="AdresatIdentyfikator_ePUPAP" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AdresatImie" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AdresatNazwa" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AdresatNazwisko" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AdresatNip" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AdresatPesel" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AdresatRegon" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AdresatTelefon" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AdresatTyp" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="CzyDokumentElektroniczny" type="xs:boolean"/>
+<xs:element minOccurs="0" name="DataNadania" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="DataPisma" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="DataWplywu" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="IdDokumentu" type="xs:long"/>
+<xs:element minOccurs="0" name="IdPracownikaRejestracji" type="xs:int"/>
+<xs:element minOccurs="0" name="IdStanowiskaRejestracji" type="xs:int"/>
+<xs:element minOccurs="0" name="LiczbaZalacznikow" type="xs:int"/>
+<xs:element minOccurs="0" name="NiePodlegaPrzechowywaniuWSkladzieChronologicznym" type="xs:boolean"/>
+<xs:element minOccurs="0" name="NumerNadania" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Rodzaj" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="SposobDostarczenia" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="SygnaturaWplywu" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Tytul" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Uwagi" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="RejestrujWplyw" nillable="true" type="tns:RejestrujWplyw"/>
+<xs:complexType name="WyszukajWplyw">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:RequestBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="IdDokumentuePUAP" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="KodKreskowy" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="NumerRpw" type="xs:long"/>
+<xs:element minOccurs="0" name="Rocznik" type="xs:int"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="WyszukajWplyw" nillable="true" type="tns:WyszukajWplyw"/>
+<xs:complexType name="EpuapWplyw">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:RequestBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="IdentyfikatorDokumentu" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="IdentyfikatorKorelacjiCID" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="EpuapWplyw" nillable="true" type="tns:EpuapWplyw"/>
+<xs:complexType name="PobierzWplywy">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:RequestBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="DataRejestracjiDo" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="DataRejestracjiOd" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="PobierzWplywy" nillable="true" type="tns:PobierzWplywy"/>
+<xs:complexType name="PrzeniesPracownika">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:RequestBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="IdJednostki" type="xs:int"/>
+<xs:element minOccurs="0" name="ZachowajDostep" type="xs:boolean"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="PrzeniesPracownika" nillable="true" type="tns:PrzeniesPracownika"/>
+<xs:complexType name="DodajPracownika">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:RequestBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="ActiveDirectory" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Atrybut1" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Atrybut2" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Atrybut3" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Atrybut4" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Atrybut5" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Atrybut6" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Email" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Haslo" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="IdJednostki" type="xs:int"/>
+<xs:element minOccurs="0" name="IdWydzialu" nillable="true" type="xs:int"/>
+<xs:element minOccurs="0" name="Imie" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Inicjaly" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Login" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Nazwisko" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="SortOrder" nillable="true" type="xs:int"/>
+<xs:element minOccurs="0" name="Stanowisko" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Ukryty" type="xs:boolean"/>
+<xs:element minOccurs="0" name="WazneDo" nillable="true" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="ZmienHaslo" type="xs:boolean"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="DodajPracownika" nillable="true" type="tns:DodajPracownika"/>
+<xs:complexType name="PobierzWszytskichPracownikow">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:RequestBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="IdJednostki" type="xs:int"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="PobierzWszytskichPracownikow" nillable="true" type="tns:PobierzWszytskichPracownikow"/>
+<xs:complexType name="PobierzPracownika">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:RequestBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="ActiveDirectory" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="IdJednostkiZrodlo" type="xs:int"/>
+<xs:element minOccurs="0" name="IdPracownikaZrodlo" type="xs:int"/>
+<xs:element minOccurs="0" name="IdStanowiskaZrodlo" type="xs:int"/>
+<xs:element minOccurs="0" name="NazwaJednostki" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="NazwaStanowiska" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="RoleOrganizacyjne" nillable="true" type="xs:string"/>
+<xs:element xmlns:q6="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="RoleOrganizacyjneArray" nillable="true" type="q6:ArrayOfstring"/>
+<xs:element minOccurs="0" name="RoleOrganizacyjneKlucz" nillable="true" type="xs:string"/>
+<xs:element xmlns:q7="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="RoleOrganizacyjneKluczArray" nillable="true" type="q7:ArrayOfstring"/>
+<xs:element minOccurs="0" name="SymbolJednostkiZrodlo" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="TypJednostkiPracownikaZrodlo" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="PobierzPracownika" nillable="true" type="tns:PobierzPracownika"/>
+<xs:complexType name="PobierzPracownikowJednostki">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:RequestBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="IdJednostki" type="xs:int"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="PobierzPracownikowJednostki" nillable="true" type="tns:PobierzPracownikowJednostki"/>
+<xs:complexType name="PobierzSzablonyObieguPracownika">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:RequestBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="IdPracownika" type="xs:int"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="PobierzSzablonyObieguPracownika" nillable="true" type="tns:PobierzSzablonyObieguPracownika"/>
+<xs:complexType name="PobierzInstalacje">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:RequestBaseDto">
+<xs:sequence/>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="PobierzInstalacje" nillable="true" type="tns:PobierzInstalacje"/>
+<xs:complexType name="StanSprawy">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:RequestBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="ZnakSprawy" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="rpw" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="StanSprawy" nillable="true" type="tns:StanSprawy"/>
+<xs:complexType name="RejestrujSprawe">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:RequestBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="DataRozpoczecia" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="IdKoszulki" type="xs:int"/>
+<xs:element minOccurs="0" name="IdKoszulkiWplywu" type="xs:int"/>
+<xs:element minOccurs="0" name="IdProwadzacegoSprawe" type="xs:int"/>
+<xs:element minOccurs="0" name="IdRejestrujacegoSprawe" type="xs:int"/>
+<xs:element minOccurs="0" name="KategoriaArchiwalna" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="NumerKolejnySprawy" type="xs:int"/>
+<xs:element minOccurs="0" name="Rok" type="xs:int"/>
+<xs:element minOccurs="0" name="TeczkaId" type="xs:int"/>
+<xs:element minOccurs="0" name="TeczkaSymbol" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="TypProwadzenia" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Uwagi" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="ZnakSprawy" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="RejestrujSprawe" nillable="true" type="tns:RejestrujSprawe"/>
+<xs:complexType name="PobierzSprawy">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:RequestBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="IdJednostki" type="xs:int"/>
+<xs:element minOccurs="0" name="Rocznik" type="xs:int"/>
+<xs:element minOccurs="0" name="SymbolJRWA" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Wlasne" nillable="true" type="xs:boolean"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="PobierzSprawy" nillable="true" type="tns:PobierzSprawy"/>
+<xs:complexType name="PobierzMetrykeSprawy">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:RequestBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="Rpw" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="ZnakSprawy" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="PobierzMetrykeSprawy" nillable="true" type="tns:PobierzMetrykeSprawy"/>
+<xs:complexType name="PobierzSprawe">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:RequestBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="IdKoszulki" type="xs:int"/>
+<xs:element minOccurs="0" name="Znak" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="PobierzSprawe" nillable="true" type="tns:PobierzSprawe"/>
+<xs:complexType name="UsunSprawe">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:RequestBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="IdKoszulki" type="xs:int"/>
+<xs:element minOccurs="0" name="IdPracownika" type="xs:int"/>
+<xs:element minOccurs="0" name="PowodUsuniecia" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Uwagi" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="UsunSprawe" nillable="true" type="tns:UsunSprawe"/>
+<xs:complexType name="PobierzOstatniaZmianaSpraw">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:RequestBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="DataZdarzeniaDo" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="DataZdarzeniaOd" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="IdPisma" type="xs:int"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="PobierzOstatniaZmianaSpraw" nillable="true" type="tns:PobierzOstatniaZmianaSpraw"/>
+<xs:complexType name="ZakonczSprawe">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:RequestBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="IdKoszulki" type="xs:int"/>
+<xs:element minOccurs="0" name="IdPracownika" type="xs:int"/>
+<xs:element minOccurs="0" name="Uwagi" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="ZakonczSprawe" nillable="true" type="tns:ZakonczSprawe"/>
+<xs:complexType name="KorespondencjaWychodzacaEpuap">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:RequestBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="IdKorespondencjiWychodzacej" type="xs:long"/>
+<xs:element minOccurs="0" name="IdKoszulki" type="xs:int"/>
+<xs:element minOccurs="0" name="IdentyfikatorDokumentu" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="IdentyfikatorKorelacjiCID" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="KorespondencjaWychodzacaEpuap" nillable="true" type="tns:KorespondencjaWychodzacaEpuap"/>
+<xs:complexType name="KorespondencjaWychodzacaEpuapRejestruj">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:RequestBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="EpuapSkrytka" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="IdAdresata" type="xs:int"/>
+<xs:element minOccurs="0" name="IdDokumentEpismo" type="xs:long"/>
+<xs:element minOccurs="0" name="IdKoszulki" type="xs:int"/>
+<xs:element minOccurs="0" name="IdPracownika" type="xs:int"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="KorespondencjaWychodzacaEpuapRejestruj" nillable="true" type="tns:KorespondencjaWychodzacaEpuapRejestruj"/>
+<xs:complexType name="KorespondencjaWychodzacaPapierowa">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:RequestBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="IdDokumentZwrotki" type="xs:long"/>
+<xs:element minOccurs="0" name="IdKorespondencjiWychodzacej" type="xs:long"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="KorespondencjaWychodzacaPapierowa" nillable="true" type="tns:KorespondencjaWychodzacaPapierowa"/>
+<xs:complexType name="KorespondencjaRejestruj">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:RequestBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="Adresaci" nillable="true" type="tns:ArrayOfAdresatTypeDto"/>
+<xs:element minOccurs="0" name="DodatkoweInformacje" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="IdKoszulki" type="xs:int"/>
+<xs:element minOccurs="0" name="IdPracownika" type="xs:int"/>
+<xs:element xmlns:q8="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="IdsDokumentyWychodzace" nillable="true" type="q8:ArrayOflong"/>
+<xs:element minOccurs="0" name="Priorytet" type="xs:boolean"/>
+<xs:element minOccurs="0" name="RodzajPrzesylki" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Strefa" type="xs:int"/>
+<xs:element minOccurs="0" name="TypKorespondencji" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Uwagi" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="UwagiDodatkowe" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Zwrotka" type="xs:boolean"/>
+<xs:element minOccurs="0" name="ePUAP_AdresOdpowiedzi" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="ePUAP_Identyfikator" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="ePUAP_TrybDostarczenia" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="KorespondencjaRejestruj" nillable="true" type="tns:KorespondencjaRejestruj"/>
+<xs:complexType name="ArrayOfAdresatTypeDto">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="unbounded" name="AdresatTypeDto" nillable="true" type="tns:AdresatTypeDto"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="ArrayOfAdresatTypeDto" nillable="true" type="tns:ArrayOfAdresatTypeDto"/>
+<xs:complexType name="KorespondencjaStatus">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:RequestBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="DataRejestracjiDo" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="DataRejestracjiOd" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="IdPisma" type="xs:int"/>
+<xs:element minOccurs="0" name="IdentyfikatorKW" type="xs:long"/>
+<xs:element minOccurs="0" name="RodzajPrzesylki" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Status" type="xs:int"/>
+<xs:element minOccurs="0" name="TypKorespondencji" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="KorespondencjaStatus" nillable="true" type="tns:KorespondencjaStatus"/>
+<xs:complexType name="KorespondencjaStatusZmiana">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:RequestBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="IdentyfikatorKW" type="xs:long"/>
+<xs:element minOccurs="0" name="Status" type="xs:int"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="KorespondencjaStatusZmiana" nillable="true" type="tns:KorespondencjaStatusZmiana"/>
+<xs:complexType name="KorespondencjaWychodzacaEdoreczeniaRejestruj">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:RequestBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="IdAdresata" type="xs:int"/>
+<xs:element minOccurs="0" name="IdKoszulki" type="xs:int"/>
+<xs:element minOccurs="0" name="IdPracownika" type="xs:int"/>
+<xs:element xmlns:q9="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="IdsDokumenty" nillable="true" type="q9:ArrayOflong"/>
+<xs:element minOccurs="0" name="InformacjeNadawcy" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="TrybWysylki" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="WiadomoscTytul" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="WiadomoscZawartosc" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="KorespondencjaWychodzacaEdoreczeniaRejestruj" nillable="true" type="tns:KorespondencjaWychodzacaEdoreczeniaRejestruj"/>
+<xs:complexType name="KolejnyNumerTeczkiRwa">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:RequestBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="IdPracownika" type="xs:int"/>
+<xs:element minOccurs="0" name="JednostkaIdOryginal" type="xs:int"/>
+<xs:element minOccurs="0" name="Rocznik" nillable="true" type="xs:int"/>
+<xs:element minOccurs="0" name="Rwa" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="KolejnyNumerTeczkiRwa" nillable="true" type="tns:KolejnyNumerTeczkiRwa"/>
+<xs:complexType name="PobierzRwa">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:RequestBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="Rocznik" type="xs:int"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="PobierzRwa" nillable="true" type="tns:PobierzRwa"/>
+<xs:complexType name="SkanPlusVerification">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:RequestBaseDto">
+<xs:sequence/>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="SkanPlusVerification" nillable="true" type="tns:SkanPlusVerification"/>
+<xs:complexType name="ZlecUtrwalenie">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:RequestBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="Dane" nillable="true" type="xs:base64Binary"/>
+<xs:element minOccurs="0" name="NumerSekwencyjny" nillable="true" type="xs:long"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="ZlecUtrwalenie" nillable="true" type="tns:ZlecUtrwalenie"/>
+<xs:complexType name="PobierzUtrwalenie">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:RequestBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="IdZlecenia" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="PobierzUtrwalenie" nillable="true" type="tns:PobierzUtrwalenie"/>
+<xs:complexType name="PobierzOstatnieUtrwalenie">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:RequestBaseDto">
+<xs:sequence/>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="PobierzOstatnieUtrwalenie" nillable="true" type="tns:PobierzOstatnieUtrwalenie"/>
+<xs:complexType name="SlownikAplikacjiPobierz">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:RequestBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="IdSlownika" type="xs:int"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="SlownikAplikacjiPobierz" nillable="true" type="tns:SlownikAplikacjiPobierz"/>
+<xs:complexType name="DodajZalacznik">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:RequestBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="Dane" nillable="true" type="xs:base64Binary"/>
+<xs:element minOccurs="0" name="DaneBase64" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Nazwa" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="DodajZalacznik" nillable="true" type="tns:DodajZalacznik"/>
+<xs:complexType name="PobierzZalacznik">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:RequestBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="IdZalacznia" type="xs:int"/>
+<xs:element minOccurs="0" name="NazwaZalacznika" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="PobierzZalacznik" nillable="true" type="tns:PobierzZalacznik"/>
+<xs:complexType name="AktualizujZalacznik">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:RequestBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="Dane" nillable="true" type="xs:base64Binary"/>
+<xs:element minOccurs="0" name="IdDokumentu" type="xs:long"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="AktualizujZalacznik" nillable="true" type="tns:AktualizujZalacznik"/>
+<xs:complexType name="AddinPobierzIdentyfikatoryDokumentowDoDrukuResponse">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:ResponseBaseDto">
+<xs:sequence>
+<xs:element xmlns:q10="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="IdZalocznikow" nillable="true" type="q10:ArrayOflong"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="AddinPobierzIdentyfikatoryDokumentowDoDrukuResponse" nillable="true" type="tns:AddinPobierzIdentyfikatoryDokumentowDoDrukuResponse"/>
+<xs:complexType name="AddinUtworzTokenDoDrukuResponse">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:ResponseBaseDto">
+<xs:sequence/>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="AddinUtworzTokenDoDrukuResponse" nillable="true" type="tns:AddinUtworzTokenDoDrukuResponse"/>
+<xs:complexType name="AddinPobierzZalcznikDoDrukuResponse">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:ResponseBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="Bytes" nillable="true" type="xs:base64Binary"/>
+<xs:element minOccurs="0" name="NazwaZalcznika" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="AddinPobierzZalcznikDoDrukuResponse" nillable="true" type="tns:AddinPobierzZalcznikDoDrukuResponse"/>
+<xs:complexType name="AddinUtworzTokenEdycjiPlikuResponse">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:ResponseBaseDto">
+<xs:sequence/>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="AddinUtworzTokenEdycjiPlikuResponse" nillable="true" type="tns:AddinUtworzTokenEdycjiPlikuResponse"/>
+<xs:complexType name="WyszukajAdresataWplywuResponse">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:ResponseBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="AdresaciWplywu" nillable="true" type="tns:ArrayOfWyszukajAdresataWplywuDto"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="WyszukajAdresataWplywuResponse" nillable="true" type="tns:WyszukajAdresataWplywuResponse"/>
+<xs:complexType name="ArrayOfWyszukajAdresataWplywuDto">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="unbounded" name="WyszukajAdresataWplywuDto" nillable="true" type="tns:WyszukajAdresataWplywuDto"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="ArrayOfWyszukajAdresataWplywuDto" nillable="true" type="tns:ArrayOfWyszukajAdresataWplywuDto"/>
+<xs:complexType name="WyszukajAdresataWplywuDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="AdresOdpowiedziEpuap" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Budynek" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="DataRejestracji" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Email" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="IdAdresat" type="xs:int"/>
+<xs:element minOccurs="0" name="IdAdresuAdresata" type="xs:int"/>
+<xs:element minOccurs="0" name="IdentyfikatorEpuap" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="KodPocztowy" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Lokal" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Miejscowosc" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="NadawcaImie" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="NadawcaNazwa" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="NadawcaNazwisko" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Nip" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="NumerRpw" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Pesel" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Regon" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Sygnatura" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Ulica" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="idKoszulki" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="WyszukajAdresataWplywuDto" nillable="true" type="tns:WyszukajAdresataWplywuDto"/>
+<xs:complexType name="AdresatPobierzResponse">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:ResponseBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="AdresAdresatDto" nillable="true" type="tns:AdresatPelnyDto"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="AdresatPobierzResponse" nillable="true" type="tns:AdresatPobierzResponse"/>
+<xs:complexType name="AdresatPelnyDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="AdresElektronicznychDoreczen" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AdresOdpowiedziEpuap" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AdresatOrginalId" type="xs:int"/>
+<xs:element minOccurs="0" name="Adresy" nillable="true" type="tns:ArrayOfAdresatAdresPelnyDto"/>
+<xs:element minOccurs="0" name="Aktualny" type="xs:boolean"/>
+<xs:element minOccurs="0" name="Atrybut1" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Atrybut10" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Atrybut2" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Atrybut3" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Atrybut4" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Atrybut5" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Atrybut6" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Atrybut7" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Atrybut8" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Atrybut9" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Atrybuty" nillable="true" type="tns:ArrayOfAtrybutObiektuTypeDto"/>
+<xs:element minOccurs="0" name="DataBlokady" nillable="true" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="DataUtworzenia" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="Id" type="xs:int"/>
+<xs:element minOccurs="0" name="IdentyfikatorEpuap" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Imie" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="NIP" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Nazwa" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Nazwisko" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="PESEL" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="PelnionaFunkcja" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="PrefiksNazwa" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="PrefiksNazwisko" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="REGON" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="TypAdresata" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="AdresatPelnyDto" nillable="true" type="tns:AdresatPelnyDto"/>
+<xs:complexType name="ArrayOfAdresatAdresPelnyDto">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="unbounded" name="AdresatAdresPelnyDto" nillable="true" type="tns:AdresatAdresPelnyDto"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="ArrayOfAdresatAdresPelnyDto" nillable="true" type="tns:ArrayOfAdresatAdresPelnyDto"/>
+<xs:complexType name="AdresatAdresPelnyDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="AdresatAdresOrginalId" type="xs:int"/>
+<xs:element minOccurs="0" name="Atrybuty" nillable="true" type="tns:ArrayOfAtrybutObiektuTypeDto"/>
+<xs:element minOccurs="0" name="DataUtworzenia" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="Id" type="xs:int"/>
+<xs:element minOccurs="0" name="KodPocztowy" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Kraj" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Miejscowosc" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="NumerBudynku" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="NumerLokalu" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Poczta" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="SkrytkaPocztowa" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="TypAdresu" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Ulica" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="AdresatAdresPelnyDto" nillable="true" type="tns:AdresatAdresPelnyDto"/>
+<xs:complexType name="AdresatDodajResponse">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:ResponseBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="IdAdres" type="xs:int"/>
+<xs:element minOccurs="0" name="IdAdresOriginal" type="xs:int"/>
+<xs:element minOccurs="0" name="IdAdresata" type="xs:int"/>
+<xs:element minOccurs="0" name="IdAdresataOriginal" type="xs:int"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="AdresatDodajResponse" nillable="true" type="tns:AdresatDodajResponse"/>
+<xs:complexType name="AdresatWyszukajResponse">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:ResponseBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="Adresaci" nillable="true" type="tns:ArrayOfAdresatAdresWyszukajDto"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="AdresatWyszukajResponse" nillable="true" type="tns:AdresatWyszukajResponse"/>
+<xs:complexType name="ArrayOfAdresatAdresWyszukajDto">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="unbounded" name="AdresatAdresWyszukajDto" nillable="true" type="tns:AdresatAdresWyszukajDto"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="ArrayOfAdresatAdresWyszukajDto" nillable="true" type="tns:ArrayOfAdresatAdresWyszukajDto"/>
+<xs:complexType name="AdresatAdresWyszukajDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="AdresatAdresElektronicznychDoreczen" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AdresatAdresID" type="xs:int"/>
+<xs:element minOccurs="0" name="AdresatAdresKodPocztowy" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AdresatAdresKraj" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AdresatAdresMiejscowosc" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AdresatAdresNumerDomu" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AdresatAdresNumerLokalu" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AdresatAdresOdpowiedzi_ePUPAP" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AdresatAdresPoczta" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AdresatAdresSkrytkaPocztowa" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AdresatAdresUlica" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AdresatEmail" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AdresatID" type="xs:int"/>
+<xs:element minOccurs="0" name="AdresatIdentyfikator_ePUPAP" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AdresatImie" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AdresatNazwa" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AdresatNazwisko" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AdresatNip" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AdresatPesel" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AdresatRegon" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AdresatTelefon" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AdresatTyp" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="AdresatAdresWyszukajDto" nillable="true" type="tns:AdresatAdresWyszukajDto"/>
+<xs:complexType name="UstawWidokPrzekazResponse">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:ResponseBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="IdEtapPisma" type="xs:int"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="UstawWidokPrzekazResponse" nillable="true" type="tns:UstawWidokPrzekazResponse"/>
+<xs:complexType name="UstawWidokFormularzaResponse">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:ResponseBaseDto">
+<xs:sequence/>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="UstawWidokFormularzaResponse" nillable="true" type="tns:UstawWidokFormularzaResponse"/>
+<xs:complexType name="DokumentLokalizacjaResponse">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:ResponseBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="IdDokumentu" type="xs:long"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="DokumentLokalizacjaResponse" nillable="true" type="tns:DokumentLokalizacjaResponse"/>
+<xs:complexType name="AktualizujDokumentResponse">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:ResponseBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="IdDokumentu" type="xs:long"/>
+<xs:element minOccurs="0" name="IdZawartosci" type="xs:int"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="AktualizujDokumentResponse" nillable="true" type="tns:AktualizujDokumentResponse"/>
+<xs:complexType name="RejestrujDokumentResponse">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:ResponseBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="IdDokumentu" type="xs:long"/>
+<xs:element minOccurs="0" name="IdZawartosci" type="xs:int"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="RejestrujDokumentResponse" nillable="true" type="tns:RejestrujDokumentResponse"/>
+<xs:complexType name="AkceptujDokumentResponse">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:ResponseBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="IdAkceptacji" type="xs:long"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="AkceptujDokumentResponse" nillable="true" type="tns:AkceptujDokumentResponse"/>
+<xs:complexType name="PobierzMetadaneDokumentuResponse">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:ResponseBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="AdresEmail" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AdresEmailFax" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AdresatAdresId" nillable="true" type="xs:int"/>
+<xs:element minOccurs="0" name="AdresatId" nillable="true" type="xs:int"/>
+<xs:element minOccurs="0" name="Akceptacje" nillable="true" type="tns:ArrayOfDokumentAkceptacjaDto"/>
+<xs:element minOccurs="0" name="Atrybuty" nillable="true" type="tns:ArrayOfAtrybutObiektuTypeDto"/>
+<xs:element minOccurs="0" name="BrakDatyNaPismie" type="xs:boolean"/>
+<xs:element minOccurs="0" name="BrakZnakuNaPismie" type="xs:boolean"/>
+<xs:element minOccurs="0" name="DataNadania" nillable="true" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="DataNadaniaPrzesylki" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="DataPodpisu" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="DataRejestracjiPrzesylki" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="DataWidniejaca" nillable="true" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="DataWplywuPrzesylki" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="DokumentElektroniczny" type="xs:boolean"/>
+<xs:element minOccurs="0" name="Dostep" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="IdDokumentu" type="xs:long"/>
+<xs:element minOccurs="0" name="IdZawartosci" type="xs:int"/>
+<xs:element minOccurs="0" name="Imie" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="KodPocztowy" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="LiczbaZalacznikow" nillable="true" type="xs:int"/>
+<xs:element minOccurs="0" name="MetaDataAktualizacji" nillable="true" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="MetadaneZapisane" type="xs:boolean"/>
+<xs:element minOccurs="0" name="Miejscowosc" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="NadawcaNazwa" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Nazwa" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Nazwisko" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="NiePodlegaPrzechowywaniu" type="xs:boolean"/>
+<xs:element minOccurs="0" name="Nip" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="NumerDomu" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="NumerLokalu" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="NumerR" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Pesel" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Poczta" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="PodpisSubject" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Podpisy" nillable="true" type="tns:ArrayOfDokumentPodpisDto"/>
+<xs:element minOccurs="0" name="Regon" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="RodzajDokumentu" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="SposobDostarczenia" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="TypAdresata" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="TypDokumentu" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Ulica" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Uwagi" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="ZawartoscRozmiar" type="xs:int"/>
+<xs:element minOccurs="0" name="ZnakWidniejacy" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="ZnakWplywu" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="PobierzMetadaneDokumentuResponse" nillable="true" type="tns:PobierzMetadaneDokumentuResponse"/>
+<xs:complexType name="ArrayOfDokumentAkceptacjaDto">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="unbounded" name="DokumentAkceptacjaDto" nillable="true" type="tns:DokumentAkceptacjaDto"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="ArrayOfDokumentAkceptacjaDto" nillable="true" type="tns:ArrayOfDokumentAkceptacjaDto"/>
+<xs:complexType name="DokumentAkceptacjaDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="CzyAkceptacja" type="xs:boolean"/>
+<xs:element minOccurs="0" name="DataAkceptacji" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="IdDokumentu" type="xs:long"/>
+<xs:element minOccurs="0" name="IdPisma" type="xs:int"/>
+<xs:element minOccurs="0" name="IdPracownika" type="xs:int"/>
+<xs:element minOccurs="0" name="IdStanowiska" type="xs:int"/>
+<xs:element minOccurs="0" name="IdZawartosci" nillable="true" type="xs:int"/>
+<xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/ezd.Data.Domain" minOccurs="0" name="Role" nillable="true" type="q11:ArrayOfSecurity_RoleOrganizacyjne"/>
+<xs:element minOccurs="0" name="Wersja" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="DokumentAkceptacjaDto" nillable="true" type="tns:DokumentAkceptacjaDto"/>
+<xs:complexType name="ArrayOfDokumentPodpisDto">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="unbounded" name="DokumentPodpisDto" nillable="true" type="tns:DokumentPodpisDto"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="ArrayOfDokumentPodpisDto" nillable="true" type="tns:ArrayOfDokumentPodpisDto"/>
+<xs:complexType name="DokumentPodpisDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="IdDokumentu" type="xs:long"/>
+<xs:element minOccurs="0" name="IdPisma" type="xs:int"/>
+<xs:element minOccurs="0" name="IdZawartosci" type="xs:int"/>
+<xs:element minOccurs="0" name="PlikPodpisuNazwa" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="PodpisData" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="PodpisSubject" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="DokumentPodpisDto" nillable="true" type="tns:DokumentPodpisDto"/>
+<xs:complexType name="PobierzOznaczoneDokumentyResponse">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:ResponseBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="DokumentyOznaczone" nillable="true" type="tns:ArrayOfDokumentOznaczonyDto"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="PobierzOznaczoneDokumentyResponse" nillable="true" type="tns:PobierzOznaczoneDokumentyResponse"/>
+<xs:complexType name="ArrayOfDokumentOznaczonyDto">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="unbounded" name="DokumentOznaczonyDto" nillable="true" type="tns:DokumentOznaczonyDto"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="ArrayOfDokumentOznaczonyDto" nillable="true" type="tns:ArrayOfDokumentOznaczonyDto"/>
+<xs:complexType name="DokumentOznaczonyDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="AdresId" type="xs:int"/>
+<xs:element minOccurs="0" name="AdresatId" type="xs:int"/>
+<xs:element minOccurs="0" name="AutorId" type="xs:int"/>
+<xs:element minOccurs="0" name="DataOznaczenia" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="DokumentId" type="xs:long"/>
+<xs:element minOccurs="0" name="DokumentyTechniczneEdoreczenia" nillable="true" type="tns:ArrayOfDokumentTechnicznyEdoreczeniaDto"/>
+<xs:element minOccurs="0" name="KoszulkaId" type="xs:int"/>
+<xs:element minOccurs="0" name="Nazwa" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="OstatniePobranie" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="OstatniePrzekazanie" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="PotwierdzeniaEdoreczenia" nillable="true" type="tns:ArrayOfZalacznikEdoreczeniaDto"/>
+<xs:element minOccurs="0" name="PracownikOznaczenia" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="PracownikWlascicielId" type="xs:int"/>
+<xs:element xmlns:q12="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="UppEpisma" nillable="true" type="q12:ArrayOfKeyValueOflongstring"/>
+<xs:element minOccurs="0" name="WersjaDokument" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="WiadomoscIdEdoreczenia" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="WplywId" type="xs:int"/>
+<xs:element minOccurs="0" name="ZalacznikId" type="xs:int"/>
+<xs:element minOccurs="0" name="ZalacznikRozmiar" type="xs:int"/>
+<xs:element minOccurs="0" name="ZalacznikiEdoreczenia" nillable="true" type="tns:ArrayOfZalacznikEdoreczeniaDto"/>
+<xs:element xmlns:q13="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ZalacznikiEpisma" nillable="true" type="q13:ArrayOfKeyValueOflongstring"/>
+<xs:element minOccurs="0" name="ZnakWplywu" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="DokumentOznaczonyDto" nillable="true" type="tns:DokumentOznaczonyDto"/>
+<xs:complexType name="ArrayOfDokumentTechnicznyEdoreczeniaDto">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="unbounded" name="DokumentTechnicznyEdoreczeniaDto" nillable="true" type="tns:DokumentTechnicznyEdoreczeniaDto"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="ArrayOfDokumentTechnicznyEdoreczeniaDto" nillable="true" type="tns:ArrayOfDokumentTechnicznyEdoreczeniaDto"/>
+<xs:complexType name="DokumentTechnicznyEdoreczeniaDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="IdDokumentEzd" type="xs:long"/>
+<xs:element minOccurs="0" name="Nazwa" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="DokumentTechnicznyEdoreczeniaDto" nillable="true" type="tns:DokumentTechnicznyEdoreczeniaDto"/>
+<xs:complexType name="ArrayOfZalacznikEdoreczeniaDto">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="unbounded" name="ZalacznikEdoreczeniaDto" nillable="true" type="tns:ZalacznikEdoreczeniaDto"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="ArrayOfZalacznikEdoreczeniaDto" nillable="true" type="tns:ArrayOfZalacznikEdoreczeniaDto"/>
+<xs:complexType name="ZalacznikEdoreczeniaDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="AddData" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="IdDokumentEzd" type="xs:long"/>
+<xs:element minOccurs="0" name="IdWiadmosci" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="IdZalacznikEzd" type="xs:long"/>
+<xs:element minOccurs="0" name="Nazwa" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="TypDowodu" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="ZalacznikEdoreczeniaDto" nillable="true" type="tns:ZalacznikEdoreczeniaDto"/>
+<xs:complexType name="DokumentPobierzResponse">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:ResponseBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="AutorId" type="xs:int"/>
+<xs:element minOccurs="0" name="DokumentDataModyfikacji" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="DokumentDataUtworzenia" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="IdZalacznika" type="xs:int"/>
+<xs:element minOccurs="0" name="NazwaDokumentu" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="NazwaZalacznika" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Sha512" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Wersja" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="ZalacznikDataUtworzenia" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Zawartosc" nillable="true" type="xs:base64Binary"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="DokumentPobierzResponse" nillable="true" type="tns:DokumentPobierzResponse"/>
+<xs:complexType name="DokumentDodajResponse">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:ResponseBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="DokumentId" type="xs:long"/>
+<xs:element minOccurs="0" name="ZawartoscId" type="xs:int"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="DokumentDodajResponse" nillable="true" type="tns:DokumentDodajResponse"/>
+<xs:complexType name="DokumentMonitResponse">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:ResponseBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="DataMonit" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="Monit" type="xs:boolean"/>
+<xs:element minOccurs="0" name="PracownikMonit" type="xs:int"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="DokumentMonitResponse" nillable="true" type="tns:DokumentMonitResponse"/>
+<xs:complexType name="NotatkaDodajResponse">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:ResponseBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="DokumentId" type="xs:long"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="NotatkaDodajResponse" nillable="true" type="tns:NotatkaDodajResponse"/>
+<xs:complexType name="PobierzJednostkeResponse">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:ResponseBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="Jednostka" nillable="true" type="tns:JednostkaDto"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="PobierzJednostkeResponse" nillable="true" type="tns:PobierzJednostkeResponse"/>
+<xs:complexType name="PobierzWszystkieJednostkiResponse">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:ResponseBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="Jednostki" nillable="true" type="tns:ArrayOfJednostkaDto"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="PobierzWszystkieJednostkiResponse" nillable="true" type="tns:PobierzWszystkieJednostkiResponse"/>
+<xs:complexType name="ArrayOfJednostkaDto">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="unbounded" name="JednostkaDto" nillable="true" type="tns:JednostkaDto"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="ArrayOfJednostkaDto" nillable="true" type="tns:ArrayOfJednostkaDto"/>
+<xs:complexType name="UtworzKoszulkeResponse">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:ResponseBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="IdKoszulki" type="xs:int"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="UtworzKoszulkeResponse" nillable="true" type="tns:UtworzKoszulkeResponse"/>
+<xs:complexType name="UtworzFormularzKoszulkiResponse">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:ResponseBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="IdInstancjiFormularza" type="xs:int"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="UtworzFormularzKoszulkiResponse" nillable="true" type="tns:UtworzFormularzKoszulkiResponse"/>
+<xs:complexType name="ZakonczKoszulkeResponse">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:ResponseBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="IdEtapPisma" type="xs:int"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="ZakonczKoszulkeResponse" nillable="true" type="tns:ZakonczKoszulkeResponse"/>
+<xs:complexType name="PrzekazKoszulkeResponse">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:ResponseBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="IdEtapPisma" type="xs:int"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="PrzekazKoszulkeResponse" nillable="true" type="tns:PrzekazKoszulkeResponse"/>
+<xs:complexType name="AktualizujKoszulkeResponse">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:ResponseBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="koszulka" nillable="true" type="tns:PismoDto"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="AktualizujKoszulkeResponse" nillable="true" type="tns:AktualizujKoszulkeResponse"/>
+<xs:complexType name="PobierzKoszulkeResponse">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:ResponseBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="Pismo" nillable="true" type="tns:PismoDto"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="PobierzKoszulkeResponse" nillable="true" type="tns:PobierzKoszulkeResponse"/>
+<xs:complexType name="PobierzKoszulkiResponse">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:ResponseBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="Pisma" nillable="true" type="tns:ArrayOfPismoDto"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="PobierzKoszulkiResponse" nillable="true" type="tns:PobierzKoszulkiResponse"/>
+<xs:complexType name="ArrayOfPismoDto">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="unbounded" name="PismoDto" nillable="true" type="tns:PismoDto"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="ArrayOfPismoDto" nillable="true" type="tns:ArrayOfPismoDto"/>
+<xs:complexType name="KoszulkiStatusResponse">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:ResponseBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="Nowe" type="xs:int"/>
+<xs:element minOccurs="0" name="WRealizacj" type="xs:int"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="KoszulkiStatusResponse" nillable="true" type="tns:KoszulkiStatusResponse"/>
+<xs:complexType name="KoszulkaListaDokumentowResponse">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:ResponseBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="ListaDokumentow" nillable="true" type="tns:ArrayOfDokumentDto"/>
+<xs:element minOccurs="0" name="ObiegDokumentow" nillable="true" type="tns:ArrayOfDokumentObiegDto"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="KoszulkaListaDokumentowResponse" nillable="true" type="tns:KoszulkaListaDokumentowResponse"/>
+<xs:complexType name="ArrayOfDokumentDto">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="unbounded" name="DokumentDto" nillable="true" type="tns:DokumentDto"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="ArrayOfDokumentDto" nillable="true" type="tns:ArrayOfDokumentDto"/>
+<xs:complexType name="DokumentDto">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:ResponseBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="Akceptacje" nillable="true" type="tns:ArrayOfDokumentAkceptacjaDto"/>
+<xs:element minOccurs="0" name="DataModyfikacji" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="DataPodpisu" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="DataUtworzenia" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="ID" type="xs:long"/>
+<xs:element minOccurs="0" name="IdPisma" type="xs:int"/>
+<xs:element minOccurs="0" name="IdWplywu" nillable="true" type="xs:long"/>
+<xs:element minOccurs="0" name="IdZawartosci" nillable="true" type="xs:int"/>
+<xs:element minOccurs="0" name="Nazwa" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="PodpisSubject" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Powiazania" nillable="true" type="tns:ArrayOfPowiazaniaPismaDto"/>
+<xs:element minOccurs="0" name="RodzajDokumentu" type="xs:int"/>
+<xs:element minOccurs="0" name="TypDokumentu" type="xs:int"/>
+<xs:element minOccurs="0" name="UtworzenieIdPracownika" type="xs:int"/>
+<xs:element minOccurs="0" name="UtworzeniePracownik" nillable="true" type="tns:PobierzPracownikaResponse"/>
+<xs:element minOccurs="0" name="ZawartoscRozmiar" nillable="true" type="xs:int"/>
+<xs:element minOccurs="0" name="ZnakWplywu" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="DokumentDto" nillable="true" type="tns:DokumentDto"/>
+<xs:complexType name="ArrayOfPowiazaniaPismaDto">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="unbounded" name="PowiazaniaPismaDto" nillable="true" type="tns:PowiazaniaPismaDto"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="ArrayOfPowiazaniaPismaDto" nillable="true" type="tns:ArrayOfPowiazaniaPismaDto"/>
+<xs:complexType name="PowiazaniaPismaDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="DataDowiazania" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="IdPisma" type="xs:int"/>
+<xs:element minOccurs="0" name="IdPismaDowiazanego" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="PowiazaniaPismaDto" nillable="true" type="tns:PowiazaniaPismaDto"/>
+<xs:complexType name="PobierzPracownikaResponse">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:ResponseBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="Email" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="IdJednostki" type="xs:int"/>
+<xs:element minOccurs="0" name="IdJednostkiOrginal" type="xs:int"/>
+<xs:element minOccurs="0" name="IdPracownika" type="xs:int"/>
+<xs:element minOccurs="0" name="IdPracownikaOrginal" type="xs:int"/>
+<xs:element minOccurs="0" name="IdStanowiska" type="xs:int"/>
+<xs:element minOccurs="0" name="IdStanowiskaOrginal" type="xs:int"/>
+<xs:element minOccurs="0" name="IdWydzial" type="xs:int"/>
+<xs:element minOccurs="0" name="IdWydzialOrginal" type="xs:int"/>
+<xs:element minOccurs="0" name="ImieNazwisko" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="NazwaJednostki" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="NazwaWydzialu" nillable="true" type="xs:string"/>
+<xs:element xmlns:q14="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Role" nillable="true" type="q14:ArrayOfstring"/>
+<xs:element xmlns:q15="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="RoleKlucz" nillable="true" type="q15:ArrayOfstring"/>
+<xs:element minOccurs="0" name="Stanowisko" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="SymbolJednostki" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="SymbolWydzialu" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="PobierzPracownikaResponse" nillable="true" type="tns:PobierzPracownikaResponse"/>
+<xs:complexType name="ArrayOfDokumentObiegDto">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="unbounded" name="DokumentObiegDto" nillable="true" type="tns:DokumentObiegDto"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="ArrayOfDokumentObiegDto" nillable="true" type="tns:ArrayOfDokumentObiegDto"/>
+<xs:complexType name="DokumentObiegDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="DataNadanie" nillable="true" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="Id" type="xs:int"/>
+<xs:element minOccurs="0" name="IdEtapTyp" type="xs:int"/>
+<xs:element minOccurs="0" name="OpisEtapTyp" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="PracownikDekretacji" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Uwagi" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="DokumentObiegDto" nillable="true" type="tns:DokumentObiegDto"/>
+<xs:complexType name="PobierzKoszulkeRejestryResponse">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:ResponseBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="Pismo" nillable="true" type="tns:KoszulkaRejestrPismoDto"/>
+<xs:element minOccurs="0" name="Sprawa" nillable="true" type="tns:KoszulkaRejestrSprawDto"/>
+<xs:element minOccurs="0" name="Wplyw" nillable="true" type="tns:KoszulkaRejestrWplywowDto"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="PobierzKoszulkeRejestryResponse" nillable="true" type="tns:PobierzKoszulkeRejestryResponse"/>
+<xs:complexType name="KoszulkaRejestrPismoDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="DataUtworzenia" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="DataZakonczenia" nillable="true" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="Id" type="xs:int"/>
+<xs:element minOccurs="0" name="Nazwa" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="KoszulkaRejestrPismoDto" nillable="true" type="tns:KoszulkaRejestrPismoDto"/>
+<xs:complexType name="KoszulkaRejestrSprawDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="DataRejestracji" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="DataZakonczenia" nillable="true" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="Id" type="xs:int"/>
+<xs:element minOccurs="0" name="Jednostka" type="xs:int"/>
+<xs:element minOccurs="0" name="Rok" type="xs:int"/>
+<xs:element minOccurs="0" name="Rwa" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="TerminSprawy" nillable="true" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="Znak" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="KoszulkaRejestrSprawDto" nillable="true" type="tns:KoszulkaRejestrSprawDto"/>
+<xs:complexType name="KoszulkaRejestrWplywowDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="DataRejestracji" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="DataWplywu" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="IdDokumentu" nillable="true" type="xs:long"/>
+<xs:element minOccurs="0" name="NadawcaNazwa" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="ZnakWplywu" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="KoszulkaRejestrWplywowDto" nillable="true" type="tns:KoszulkaRejestrWplywowDto"/>
+<xs:complexType name="UdostepnijKoszulkeResponse">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:ResponseBaseDto">
+<xs:sequence>
+<xs:element xmlns:q16="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ListaUdostepnionychKoszulek" nillable="true" type="q16:ArrayOfKeyValueOfintint"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="UdostepnijKoszulkeResponse" nillable="true" type="tns:UdostepnijKoszulkeResponse"/>
+<xs:complexType name="PowiazKoszulkeResponse">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:ResponseBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="idKoszulki" type="xs:int"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="PowiazKoszulkeResponse" nillable="true" type="tns:PowiazKoszulkeResponse"/>
+<xs:complexType name="AktualizujAtrybutyKoszulkiResponse">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:ResponseBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="IdKoszulki" type="xs:int"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="AktualizujAtrybutyKoszulkiResponse" nillable="true" type="tns:AktualizujAtrybutyKoszulkiResponse"/>
+<xs:complexType name="KopiujKoszulkeResponse">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:ResponseBaseDto">
+<xs:sequence>
+<xs:element xmlns:q17="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="IdsKopiiKoszulki" nillable="true" type="q17:ArrayOfint"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="KopiujKoszulkeResponse" nillable="true" type="tns:KopiujKoszulkeResponse"/>
+<xs:complexType name="PrzekazKoszulkeWgSzablonuResponse">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:ResponseBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="IdEtapPisma" type="xs:int"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="PrzekazKoszulkeWgSzablonuResponse" nillable="true" type="tns:PrzekazKoszulkeWgSzablonuResponse"/>
+<xs:complexType name="ImportujPaczkeMigracyjnaResponse">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:ResponseBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="Informacja" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="ImportujPaczkeMigracyjnaResponse" nillable="true" type="tns:ImportujPaczkeMigracyjnaResponse"/>
+<xs:complexType name="PodmiotyPismaPobierzResponse">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:ResponseBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="PodmiotyPisma" nillable="true" type="tns:ArrayOfPodmiotPismaDto"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="PodmiotyPismaPobierzResponse" nillable="true" type="tns:PodmiotyPismaPobierzResponse"/>
+<xs:complexType name="ArrayOfPodmiotPismaDto">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="unbounded" name="PodmiotPismaDto" nillable="true" type="tns:PodmiotPismaDto"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="ArrayOfPodmiotPismaDto" nillable="true" type="tns:ArrayOfPodmiotPismaDto"/>
+<xs:complexType name="PodmiotPismaDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="DataDodania" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="Elektroniczny" nillable="true" type="xs:boolean"/>
+<xs:element minOccurs="0" name="Grupa" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="IdAdresata" type="xs:int"/>
+<xs:element minOccurs="0" name="IdAdresu" type="xs:int"/>
+<xs:element minOccurs="0" name="IdPisma" type="xs:int"/>
+<xs:element minOccurs="0" name="IdSprawy" type="xs:int"/>
+<xs:element minOccurs="0" name="IdUzytkownika" type="xs:int"/>
+<xs:element minOccurs="0" name="PodmiotNadrzedny" type="xs:int"/>
+<xs:element minOccurs="0" name="Rola" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Uwagi" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="ZnakSprawy" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="PodmiotPismaDto" nillable="true" type="tns:PodmiotPismaDto"/>
+<xs:complexType name="PodmiotPismaDodajResponse">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:ResponseBaseDto">
+<xs:sequence/>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="PodmiotPismaDodajResponse" nillable="true" type="tns:PodmiotPismaDodajResponse"/>
+<xs:complexType name="AktualizujMetadaneWplywuResponse">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:ResponseBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="IdAdresata" type="xs:int"/>
+<xs:element minOccurs="0" name="IdAdresu" type="xs:int"/>
+<xs:element minOccurs="0" name="IdDokumentu" type="xs:long"/>
+<xs:element minOccurs="0" name="IdKoszulki" type="xs:int"/>
+<xs:element minOccurs="0" name="IdWplywu" type="xs:int"/>
+<xs:element minOccurs="0" name="ZnakWplywu" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="AktualizujMetadaneWplywuResponse" nillable="true" type="tns:AktualizujMetadaneWplywuResponse"/>
+<xs:complexType name="RejestrujWplywResponse">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:ResponseBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="IdAdresata" type="xs:int"/>
+<xs:element minOccurs="0" name="IdAdresu" type="xs:int"/>
+<xs:element minOccurs="0" name="IdDokumentu" type="xs:long"/>
+<xs:element minOccurs="0" name="IdKoszulki" type="xs:int"/>
+<xs:element minOccurs="0" name="IdWplywu" type="xs:int"/>
+<xs:element minOccurs="0" name="ZnakWplywu" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="RejestrujWplywResponse" nillable="true" type="tns:RejestrujWplywResponse"/>
+<xs:complexType name="WyszukajWplywResponse">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:ResponseBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="IdDokumentu" type="xs:long"/>
+<xs:element minOccurs="0" name="IdKoszulki" type="xs:long"/>
+<xs:element xmlns:q18="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="IdsKoszulek" nillable="true" type="q18:ArrayOflong"/>
+<xs:element minOccurs="0" name="ZnakWplywu" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="WyszukajWplywResponse" nillable="true" type="tns:WyszukajWplywResponse"/>
+<xs:complexType name="EpuapWplywResponse">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:ResponseBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="ListaWplywow" nillable="true" type="tns:ArrayOfEpuapWplywRejestrDto"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="EpuapWplywResponse" nillable="true" type="tns:EpuapWplywResponse"/>
+<xs:complexType name="ArrayOfEpuapWplywRejestrDto">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="unbounded" name="EpuapWplywRejestrDto" nillable="true" type="tns:EpuapWplywRejestrDto"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="ArrayOfEpuapWplywRejestrDto" nillable="true" type="tns:ArrayOfEpuapWplywRejestrDto"/>
+<xs:complexType name="EpuapWplywRejestrDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="AdresSkrytki" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="DataRejestracji" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="DataWplywu" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="IdDokumentu" nillable="true" type="xs:long"/>
+<xs:element minOccurs="0" name="IdPisma" type="xs:int"/>
+<xs:element minOccurs="0" name="IdentyfikatorDokumentu" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="IdentyfikatorKorelacji" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="NadawcaNazwa" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="ZP" type="xs:boolean"/>
+<xs:element minOccurs="0" name="ZnakWplywu" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="EpuapWplywRejestrDto" nillable="true" type="tns:EpuapWplywRejestrDto"/>
+<xs:complexType name="PobierzWplywyResponse">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:ResponseBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="ListaWplywow" nillable="true" type="tns:ArrayOfWyszukajWplywDto"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="PobierzWplywyResponse" nillable="true" type="tns:PobierzWplywyResponse"/>
+<xs:complexType name="ArrayOfWyszukajWplywDto">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="unbounded" name="WyszukajWplywDto" nillable="true" type="tns:WyszukajWplywDto"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="ArrayOfWyszukajWplywDto" nillable="true" type="tns:ArrayOfWyszukajWplywDto"/>
+<xs:complexType name="WyszukajWplywDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="DataNadania" nillable="true" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="DataRejestracji" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="DataWplywu" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="Id" type="xs:int"/>
+<xs:element minOccurs="0" name="IdAdresata" type="xs:int"/>
+<xs:element minOccurs="0" name="IdAdresu" type="xs:int"/>
+<xs:element minOccurs="0" name="IdDokumentu" type="xs:long"/>
+<xs:element minOccurs="0" name="IdKoszulki" type="xs:long"/>
+<xs:element minOccurs="0" name="NadawcaNazwa" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="SposobDostarczenia" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="ZnakWplywu" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="WyszukajWplywDto" nillable="true" type="tns:WyszukajWplywDto"/>
+<xs:complexType name="PrzeniesPracownikaResponse">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:ResponseBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="IdJednostki" type="xs:int"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="PrzeniesPracownikaResponse" nillable="true" type="tns:PrzeniesPracownikaResponse"/>
+<xs:complexType name="DodajPracownikaResponse">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:ResponseBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="IdPracownika" type="xs:int"/>
+<xs:element minOccurs="0" name="IdStanowiska" type="xs:int"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="DodajPracownikaResponse" nillable="true" type="tns:DodajPracownikaResponse"/>
+<xs:complexType name="PobierzWszytskichPracownikowResponse">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:ResponseBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="Pracownicy" nillable="true" type="tns:ArrayOfPracownikDto"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="PobierzWszytskichPracownikowResponse" nillable="true" type="tns:PobierzWszytskichPracownikowResponse"/>
+<xs:complexType name="ArrayOfPracownikDto">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="unbounded" name="PracownikDto" nillable="true" type="tns:PracownikDto"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="ArrayOfPracownikDto" nillable="true" type="tns:ArrayOfPracownikDto"/>
+<xs:complexType name="PobierzPracownikowJednostkiResponse">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:ResponseBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="Pracownicy" nillable="true" type="tns:ArrayOfPracownikDto"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="PobierzPracownikowJednostkiResponse" nillable="true" type="tns:PobierzPracownikowJednostkiResponse"/>
+<xs:complexType name="PobierzSzablonyObieguPracownikaResponse">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:ResponseBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="SzblonyObiegu" nillable="true" type="tns:ArrayOfSzablonObieguDto"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="PobierzSzablonyObieguPracownikaResponse" nillable="true" type="tns:PobierzSzablonyObieguPracownikaResponse"/>
+<xs:complexType name="ArrayOfSzablonObieguDto">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="unbounded" name="SzablonObieguDto" nillable="true" type="tns:SzablonObieguDto"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="ArrayOfSzablonObieguDto" nillable="true" type="tns:ArrayOfSzablonObieguDto"/>
+<xs:complexType name="SzablonObieguDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="Aktywny" type="xs:boolean"/>
+<xs:element minOccurs="0" name="DataDodania" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="Id" type="xs:int"/>
+<xs:element minOccurs="0" name="IdPracownikaOryginal" type="xs:int"/>
+<xs:element minOccurs="0" name="Nazwa" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="SzablonObieguDto" nillable="true" type="tns:SzablonObieguDto"/>
+<xs:complexType name="PobierzInstalacjeResponse">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:ResponseBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="Instalacje" nillable="true" type="tns:ArrayOfInstalacjaDto"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="PobierzInstalacjeResponse" nillable="true" type="tns:PobierzInstalacjeResponse"/>
+<xs:complexType name="ArrayOfInstalacjaDto">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="unbounded" name="InstalacjaDto" nillable="true" type="tns:InstalacjaDto"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="ArrayOfInstalacjaDto" nillable="true" type="tns:ArrayOfInstalacjaDto"/>
+<xs:complexType name="InstalacjaDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="ApiUri" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Nazwa" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="InstalacjaDto" nillable="true" type="tns:InstalacjaDto"/>
+<xs:complexType name="StanSprawyResponse">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:ResponseBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="DataRejestracji" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="DataWplyniecia" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="DataZakonczenia" nillable="true" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="Jednostka" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="WRealizacji" type="xs:boolean"/>
+<xs:element minOccurs="0" name="WlascicielNazwaWyswietlana" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Zakonczona" type="xs:boolean"/>
+<xs:element minOccurs="0" name="Zawieszona" type="xs:boolean"/>
+<xs:element minOccurs="0" name="ZnakSprawy" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="StanSprawyResponse" nillable="true" type="tns:StanSprawyResponse"/>
+<xs:complexType name="RejestrujSpraweResponse">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:ResponseBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="DataRejestracjiSprawy" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="IdSprawy" type="xs:int"/>
+<xs:element minOccurs="0" name="IdTeczki" type="xs:int"/>
+<xs:element minOccurs="0" name="IdTeczkiParent" type="xs:int"/>
+<xs:element minOccurs="0" name="KategoriaArchiwalna" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="SymbolTeczki" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="SymbolTeczkiParent" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="TypProwadzenia" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="RejestrujSpraweResponse" nillable="true" type="tns:RejestrujSpraweResponse"/>
+<xs:complexType name="PobierzSprawyResponse">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:ResponseBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="ListaSpraw" nillable="true" type="tns:ArrayOfPobierzSprawyResponseDto"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="PobierzSprawyResponse" nillable="true" type="tns:PobierzSprawyResponse"/>
+<xs:complexType name="ArrayOfPobierzSprawyResponseDto">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="unbounded" name="PobierzSprawyResponseDto" nillable="true" type="tns:PobierzSprawyResponseDto"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="ArrayOfPobierzSprawyResponseDto" nillable="true" type="tns:ArrayOfPobierzSprawyResponseDto"/>
+<xs:complexType name="PobierzSprawyResponseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="DataRejestracji" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="DataRozpoczecia" nillable="true" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="DataZakonczenia" nillable="true" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="Id" type="xs:int"/>
+<xs:element minOccurs="0" name="IdDokumentuMeta" nillable="true" type="xs:long"/>
+<xs:element minOccurs="0" name="IdDokumentuWszczynajacego" nillable="true" type="xs:long"/>
+<xs:element minOccurs="0" name="IdJednostki" type="xs:int"/>
+<xs:element minOccurs="0" name="IdPisma" type="xs:int"/>
+<xs:element minOccurs="0" name="IdProwadzacego" type="xs:int"/>
+<xs:element minOccurs="0" name="IdWlasciciela" type="xs:int"/>
+<xs:element minOccurs="0" name="IdWszczynajacego" type="xs:int"/>
+<xs:element minOccurs="0" name="NazwaPisma" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Rok" type="xs:int"/>
+<xs:element minOccurs="0" name="Rwa" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="TerminSprawy" nillable="true" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="Uwagi" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Znak" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="PobierzSprawyResponseDto" nillable="true" type="tns:PobierzSprawyResponseDto"/>
+<xs:complexType name="MetrykaSprawyResponse">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:ResponseBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="IdPisma" type="xs:int"/>
+<xs:element minOccurs="0" name="ListaCzynnosci" nillable="true" type="tns:ArrayOfCzynnoscMetrykiSprawyDto"/>
+<xs:element minOccurs="0" name="ZnakSprawy" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="MetrykaSprawyResponse" nillable="true" type="tns:MetrykaSprawyResponse"/>
+<xs:complexType name="ArrayOfCzynnoscMetrykiSprawyDto">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="unbounded" name="CzynnoscMetrykiSprawyDto" nillable="true" type="tns:CzynnoscMetrykiSprawyDto"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="ArrayOfCzynnoscMetrykiSprawyDto" nillable="true" type="tns:ArrayOfCzynnoscMetrykiSprawyDto"/>
+<xs:complexType name="CzynnoscMetrykiSprawyDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="DataZdarzenia" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="IdPisma" type="xs:int"/>
+<xs:element minOccurs="0" name="IdentyfikatorDokumentu" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Pracownik" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Zdarzenie" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="CzynnoscMetrykiSprawyDto" nillable="true" type="tns:CzynnoscMetrykiSprawyDto"/>
+<xs:complexType name="PobierzSpraweResponse">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:ResponseBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="Sprawa" nillable="true" type="tns:PobierzSprawyResponseDto"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="PobierzSpraweResponse" nillable="true" type="tns:PobierzSpraweResponse"/>
+<xs:complexType name="PobierzOstatniaZmianaSprawResponse">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:ResponseBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="SprawyZmiany" nillable="true" type="tns:ArrayOfZmianaSprawyDto"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="PobierzOstatniaZmianaSprawResponse" nillable="true" type="tns:PobierzOstatniaZmianaSprawResponse"/>
+<xs:complexType name="ArrayOfZmianaSprawyDto">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="unbounded" name="ZmianaSprawyDto" nillable="true" type="tns:ZmianaSprawyDto"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="ArrayOfZmianaSprawyDto" nillable="true" type="tns:ArrayOfZmianaSprawyDto"/>
+<xs:complexType name="ZmianaSprawyDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="DataZdarzenia" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="IdPisma" type="xs:int"/>
+<xs:element minOccurs="0" name="RodzajZdarzenia" type="xs:int"/>
+<xs:element minOccurs="0" name="Zdarzenie" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="ZmianaSprawyDto" nillable="true" type="tns:ZmianaSprawyDto"/>
+<xs:complexType name="ZakonczSpraweResponse">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:ResponseBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="DataZakonczeniaSprawy" nillable="true" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="IdSprawy" type="xs:int"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="ZakonczSpraweResponse" nillable="true" type="tns:ZakonczSpraweResponse"/>
+<xs:complexType name="KorespondencjaWychodzacaEpuapResponse">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:ResponseBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="WychodzacaEpuapLista" nillable="true" type="tns:ArrayOfKorespondencjaWychodzacaEpuapDto"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="KorespondencjaWychodzacaEpuapResponse" nillable="true" type="tns:KorespondencjaWychodzacaEpuapResponse"/>
+<xs:complexType name="ArrayOfKorespondencjaWychodzacaEpuapDto">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="unbounded" name="KorespondencjaWychodzacaEpuapDto" nillable="true" type="tns:KorespondencjaWychodzacaEpuapDto"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="ArrayOfKorespondencjaWychodzacaEpuapDto" nillable="true" type="tns:ArrayOfKorespondencjaWychodzacaEpuapDto"/>
+<xs:complexType name="KorespondencjaWychodzacaEpuapDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="AdresatNazwa" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AdresatSkrytki" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="DataWyslania" nillable="true" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="IdDokumentUPO" nillable="true" type="xs:long"/>
+<xs:element minOccurs="0" name="IdDokumentu" nillable="true" type="xs:long"/>
+<xs:element minOccurs="0" name="IdPisma" type="xs:int"/>
+<xs:element minOccurs="0" name="IdZalacznika" nillable="true" type="xs:int"/>
+<xs:element minOccurs="0" name="IdentyfikatorDokumentu" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="IdentyfikatorKorelacji" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="StatusKomunikat" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="TerminDoreczenia" nillable="true" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="TrybWyslania" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="KorespondencjaWychodzacaEpuapDto" nillable="true" type="tns:KorespondencjaWychodzacaEpuapDto"/>
+<xs:complexType name="KorespondencjaWychodzacaEpuapRejestrujResponse">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:ResponseBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="DataRejestracji" nillable="true" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="IdentyfikatorKW" type="xs:long"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="KorespondencjaWychodzacaEpuapRejestrujResponse" nillable="true" type="tns:KorespondencjaWychodzacaEpuapRejestrujResponse"/>
+<xs:complexType name="KorespondencjaWychodzacaPapierowaResponse">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:ResponseBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="WychodzacaPapierowaLista" nillable="true" type="tns:ArrayOfKorespondencjaWychodzacaPapierowaDto"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="KorespondencjaWychodzacaPapierowaResponse" nillable="true" type="tns:KorespondencjaWychodzacaPapierowaResponse"/>
+<xs:complexType name="ArrayOfKorespondencjaWychodzacaPapierowaDto">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="unbounded" name="KorespondencjaWychodzacaPapierowaDto" nillable="true" type="tns:KorespondencjaWychodzacaPapierowaDto"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="ArrayOfKorespondencjaWychodzacaPapierowaDto" nillable="true" type="tns:ArrayOfKorespondencjaWychodzacaPapierowaDto"/>
+<xs:complexType name="KorespondencjaWychodzacaPapierowaDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="AdresatNazwa" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="DataWyslania" nillable="true" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="IdKorespondencji" type="xs:long"/>
+<xs:element minOccurs="0" name="IdPisma" type="xs:int"/>
+<xs:element minOccurs="0" name="IdZwrotki" nillable="true" type="xs:long"/>
+<xs:element minOccurs="0" name="ListaZalacznikow" nillable="true" type="tns:ArrayOfKorespondencjaZawartoscDto"/>
+<xs:element minOccurs="0" name="RodzajPrzesylki" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="ZwrotkaStatus" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="KorespondencjaWychodzacaPapierowaDto" nillable="true" type="tns:KorespondencjaWychodzacaPapierowaDto"/>
+<xs:complexType name="ArrayOfKorespondencjaZawartoscDto">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="unbounded" name="KorespondencjaZawartoscDto" nillable="true" type="tns:KorespondencjaZawartoscDto"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="ArrayOfKorespondencjaZawartoscDto" nillable="true" type="tns:ArrayOfKorespondencjaZawartoscDto"/>
+<xs:complexType name="KorespondencjaZawartoscDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="IdDokumentu" nillable="true" type="xs:long"/>
+<xs:element minOccurs="0" name="IdZalacznika" nillable="true" type="xs:int"/>
+<xs:element minOccurs="0" name="ZalacznikRozmiar" nillable="true" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="KorespondencjaZawartoscDto" nillable="true" type="tns:KorespondencjaZawartoscDto"/>
+<xs:complexType name="KorespondencjaRejestrujResponse">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:ResponseBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="Korespondencja" nillable="true" type="tns:ArrayOfKorespondencjaZarejestrowanaDto"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="KorespondencjaRejestrujResponse" nillable="true" type="tns:KorespondencjaRejestrujResponse"/>
+<xs:complexType name="ArrayOfKorespondencjaZarejestrowanaDto">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="unbounded" name="KorespondencjaZarejestrowanaDto" nillable="true" type="tns:KorespondencjaZarejestrowanaDto"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="ArrayOfKorespondencjaZarejestrowanaDto" nillable="true" type="tns:ArrayOfKorespondencjaZarejestrowanaDto"/>
+<xs:complexType name="KorespondencjaZarejestrowanaDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="DataRejestracji" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="IdentyfikatorKW" type="xs:long"/>
+<xs:element minOccurs="0" name="Status" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="ZwrotkaEtykieta" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="KorespondencjaZarejestrowanaDto" nillable="true" type="tns:KorespondencjaZarejestrowanaDto"/>
+<xs:complexType name="KorespondencjaStatusResponse">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:ResponseBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="ListaKwStatusu" nillable="true" type="tns:ArrayOfKorespondencjaStatusDto"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="KorespondencjaStatusResponse" nillable="true" type="tns:KorespondencjaStatusResponse"/>
+<xs:complexType name="ArrayOfKorespondencjaStatusDto">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="unbounded" name="KorespondencjaStatusDto" nillable="true" type="tns:KorespondencjaStatusDto"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="ArrayOfKorespondencjaStatusDto" nillable="true" type="tns:ArrayOfKorespondencjaStatusDto"/>
+<xs:complexType name="KorespondencjaStatusDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="AdeAdresWysylki" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AdeError" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AdeStatusWysylki" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AdeTrybWysylki" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AdresatAdresId" type="xs:int"/>
+<xs:element minOccurs="0" name="AdresatBudynek" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AdresatId" type="xs:int"/>
+<xs:element minOccurs="0" name="AdresatImie" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AdresatKodPocztowy" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AdresatKraj" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AdresatLokal" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AdresatMiejscowosc" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AdresatNazwa" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AdresatNazwisko" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AdresatSkrytka" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AdresatUlica" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="DataDoreczenia" nillable="true" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="DataOdbioru" nillable="true" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="DataRejestracji" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="DataWyslania" nillable="true" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="Format" nillable="true" type="xs:int"/>
+<xs:element minOccurs="0" name="FormatOpis" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Gabaryt" type="xs:int"/>
+<xs:element minOccurs="0" name="GabarytOpis" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="IdDokumentUPO" nillable="true" type="xs:long"/>
+<xs:element minOccurs="0" name="IdKoszulki" type="xs:int"/>
+<xs:element minOccurs="0" name="IdPracownikaRejestracji" type="xs:int"/>
+<xs:element minOccurs="0" name="IdentyfikatorKW" type="xs:long"/>
+<xs:element minOccurs="0" name="KorespondencjaEdoreczenia" nillable="true" type="tns:ArrayOfZalacznikEdoreczeniaDto"/>
+<xs:element minOccurs="0" name="Oplata" type="xs:double"/>
+<xs:element minOccurs="0" name="Polecona" type="xs:boolean"/>
+<xs:element minOccurs="0" name="PotwierdzeniaEdoreczenia" nillable="true" type="tns:ArrayOfZalacznikEdoreczeniaDto"/>
+<xs:element minOccurs="0" name="Priorytetowa" type="xs:boolean"/>
+<xs:element minOccurs="0" name="R" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="RodzajPrzesylki" type="xs:int"/>
+<xs:element minOccurs="0" name="RodzajPrzesylkiNazwa" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Status" type="xs:int"/>
+<xs:element minOccurs="0" name="StatusKomunikat" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="StatusOpis" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Strefa" type="xs:int"/>
+<xs:element minOccurs="0" name="TerminDoreczenia" nillable="true" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="TypDoreczenia" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Uwagi" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Waga" type="xs:double"/>
+<xs:element minOccurs="0" name="Zalaczniki" nillable="true" type="tns:ArrayOfKorespondencjaZawartoscDto"/>
+<xs:element minOccurs="0" name="ZwrotkaDataOdbioru" nillable="true" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="ZwrotkaDataPowtorneAwizo" nillable="true" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="ZwrotkaDataRejestracji" nillable="true" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="ZwrotkaIdZawartosci" nillable="true" type="xs:int"/>
+<xs:element minOccurs="0" name="ZwrotkaNieodebrana" nillable="true" type="xs:boolean"/>
+<xs:element minOccurs="0" name="ZwrotkaOdbiorca" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="ZwrotkaPowod" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="KorespondencjaStatusDto" nillable="true" type="tns:KorespondencjaStatusDto"/>
+<xs:complexType name="KorespondencjaStatusZmianaResponse">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:ResponseBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="IdentyfikatorKW" type="xs:long"/>
+<xs:element minOccurs="0" name="Status" type="xs:int"/>
+<xs:element minOccurs="0" name="StatusDesc" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="KorespondencjaStatusZmianaResponse" nillable="true" type="tns:KorespondencjaStatusZmianaResponse"/>
+<xs:complexType name="KorespondencjaWychodzacaEdoreczeniaResponse">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:ResponseBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="IdentyfikatorKW" type="xs:long"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="KorespondencjaWychodzacaEdoreczeniaResponse" nillable="true" type="tns:KorespondencjaWychodzacaEdoreczeniaResponse"/>
+<xs:complexType name="KolejnyNumerTeczkiRwaResponse">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:ResponseBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="lp" nillable="true" type="xs:int"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="KolejnyNumerTeczkiRwaResponse" nillable="true" type="tns:KolejnyNumerTeczkiRwaResponse"/>
+<xs:complexType name="PobierzRwaResponse">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:ResponseBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="Teczki" nillable="true" type="tns:TeczkaRwaDto"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="PobierzRwaResponse" nillable="true" type="tns:PobierzRwaResponse"/>
+<xs:complexType name="TeczkaRwaDto">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:ResponseBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="ID" type="xs:int"/>
+<xs:element minOccurs="0" name="IdJednostki" nillable="true" type="xs:int"/>
+<xs:element minOccurs="0" name="IloscWyjatkow" type="xs:int"/>
+<xs:element minOccurs="0" name="KategoriaArchiwalna" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="LP" nillable="true" type="xs:int"/>
+<xs:element minOccurs="0" name="Nazwa" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Nieaktywny" type="xs:boolean"/>
+<xs:element minOccurs="0" name="NumerLP" type="xs:int"/>
+<xs:element minOccurs="0" name="Rok" type="xs:int"/>
+<xs:element minOccurs="0" name="Symbol" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="TeczkiPodrzedne" nillable="true" type="tns:ArrayOfTeczkaRwaDto"/>
+<xs:element minOccurs="0" name="TerminDni" nillable="true" type="xs:int"/>
+<xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/ezd.Data.Enums" minOccurs="0" name="TypProwadzenia" type="q19:TypProwadzenia"/>
+<xs:element minOccurs="0" name="UdostepnienieWyjatek" type="xs:boolean"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="TeczkaRwaDto" nillable="true" type="tns:TeczkaRwaDto"/>
+<xs:complexType name="ArrayOfTeczkaRwaDto">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="unbounded" name="TeczkaRwaDto" nillable="true" type="tns:TeczkaRwaDto"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="ArrayOfTeczkaRwaDto" nillable="true" type="tns:ArrayOfTeczkaRwaDto"/>
+<xs:complexType name="SkanPlusVerificationResponse">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:ResponseBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="AsposeLic" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="DynamicDotNetTwain" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Pracownik" nillable="true" type="tns:PracownikDto"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="SkanPlusVerificationResponse" nillable="true" type="tns:SkanPlusVerificationResponse"/>
+<xs:complexType name="ZlecUtrwalenieResponse">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:ResponseBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="IdZlecenia" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="ZlecUtrwalenieResponse" nillable="true" type="tns:ZlecUtrwalenieResponse"/>
+<xs:complexType name="PobierzUtrwalenieResponse">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:ResponseBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="TrescUtrwalenie" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="PobierzUtrwalenieResponse" nillable="true" type="tns:PobierzUtrwalenieResponse"/>
+<xs:complexType name="SlownikAplikacjiPobierzResponse">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:ResponseBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="Nazwa" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="SlownikAplikacji" nillable="true" type="tns:ArrayOfSlownikAplikacjiDto"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="SlownikAplikacjiPobierzResponse" nillable="true" type="tns:SlownikAplikacjiPobierzResponse"/>
+<xs:complexType name="ArrayOfSlownikAplikacjiDto">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="unbounded" name="SlownikAplikacjiDto" nillable="true" type="tns:SlownikAplikacjiDto"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="ArrayOfSlownikAplikacjiDto" nillable="true" type="tns:ArrayOfSlownikAplikacjiDto"/>
+<xs:complexType name="SlownikAplikacjiDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="DisplayValue" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Enabled" type="xs:boolean"/>
+<xs:element minOccurs="0" name="Flaga1" nillable="true" type="xs:boolean"/>
+<xs:element minOccurs="0" name="Id" type="xs:int"/>
+<xs:element minOccurs="0" name="IdSlownika" type="xs:int"/>
+<xs:element minOccurs="0" name="Nazwa" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Value1" type="xs:int"/>
+<xs:element minOccurs="0" name="Value2" type="xs:int"/>
+<xs:element minOccurs="0" name="Value3" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Value4" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="SlownikAplikacjiDto" nillable="true" type="tns:SlownikAplikacjiDto"/>
+<xs:complexType name="DodajZalacznikResponse">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:ResponseBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="ContentId" type="xs:int"/>
+<xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/ezd.Data.Integration" minOccurs="0" name="Lokalizacja" nillable="true" type="q20:ArrayOfZalacznikLokalizacjaDto"/>
+<xs:element minOccurs="0" name="Nazwa" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="DodajZalacznikResponse" nillable="true" type="tns:DodajZalacznikResponse"/>
+<xs:complexType name="PobierzZalacznikResponse">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:ResponseBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="Nazwa" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="zalacznik" nillable="true" type="xs:base64Binary"/>
+<xs:element minOccurs="0" name="zalacznikDto" nillable="true" type="tns:ZalacznikDto"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="PobierzZalacznikResponse" nillable="true" type="tns:PobierzZalacznikResponse"/>
+<xs:complexType name="ZalacznikDto">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:ResponseBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="DataUtworzenia" nillable="true" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="Hash" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="ID" type="xs:int"/>
+<xs:element minOccurs="0" name="IdPracownika" type="xs:int"/>
+<xs:element minOccurs="0" name="LiczbaStron" nillable="true" type="xs:int"/>
+<xs:element minOccurs="0" name="Nazwa" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Oryginal" nillable="true" type="xs:int"/>
+<xs:element minOccurs="0" name="Podpis" type="xs:boolean"/>
+<xs:element minOccurs="0" name="PodpisPracownik" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Poprzedni" nillable="true" type="tns:ZalacznikDto"/>
+<xs:element minOccurs="0" name="Pracownik" nillable="true" type="tns:PracownikDto"/>
+<xs:element minOccurs="0" name="Rozmiar" type="xs:int"/>
+<xs:element minOccurs="0" name="Typ" type="xs:int"/>
+<xs:element minOccurs="0" name="Wersja" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="ZalacznikDto" nillable="true" type="tns:ZalacznikDto"/>
+<xs:complexType name="AktualizujZalacznikResponse">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:ResponseBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="IdZawartosci" type="xs:int"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="AktualizujZalacznikResponse" nillable="true" type="tns:AktualizujZalacznikResponse"/>
+</xs:schema>

@@ -1,0 +1,549 @@
+@page "/"
+@rendermode InteractiveServer
+@inject IEmailService EmailService
+@inject IEzdApiService EzdService
+@inject IOptions<EzdSettings> EzdSettingsOptions
+@using Microsoft.Extensions.Options
+
+<div class="container-fluid">
+    <div class="row mb-4">
+        <div class="col">
+            <h1 class="h3 mb-0">
+                <i class="bi bi-inbox me-2"></i>Skrzynka Email
+            </h1>
+            <p class="text-muted mt-1">Pobierz wiadomości i zarejestruj je jako wpływy w EZD PUW</p>
+        </div>
+    </div>
+
+    @* Configuration warnings *@
+    @if (!EmailService.IsConfigured)
+    {
+        <div class="alert alert-warning d-flex align-items-center" role="alert">
+            <i class="bi bi-exclamation-triangle-fill me-2"></i>
+            <div>
+                <strong>IMAP:</strong> Brak konfiguracji. Ustaw <code>ImapServer</code>, <code>Username</code>, <code>Password</code> w <code>appsettings.json</code>
+            </div>
+        </div>
+    }
+
+    @if (!EzdService.IsConfigured)
+    {
+        <div class="alert alert-info d-flex align-items-center" role="alert">
+            <i class="bi bi-info-circle-fill me-2"></i>
+            <div>
+                <strong>EZD API:</strong> Brak <code>ApiUrl</code> w konfiguracji.
+            </div>
+        </div>
+    }
+    
+    @{ var ezdSettings = EzdSettingsOptions.Value; }
+    @if (ezdSettings.HasApiUrl && !ezdSettings.IsFullyConfigured)
+    {
+        var missing = ezdSettings.GetMissingConfigItems();
+        <div class="alert alert-warning d-flex align-items-center" role="alert">
+            <i class="bi bi-gear me-2"></i>
+            <div>
+                <strong>EZD:</strong> Brakujące ustawienia: 
+                @foreach (var item in missing)
+                {
+                    <code class="me-1">@item</code>
+                }
+                <span class="text-muted">— rejestracja może nie działać poprawnie.</span>
+            </div>
+        </div>
+    }
+
+    @* Action buttons *@
+    <div class="card mb-4">
+        <div class="card-body d-flex gap-3 flex-wrap">
+            <button class="btn btn-primary" @onclick="LoadEmails" disabled="@(isLoading || !EmailService.IsConfigured)">
+                @if (isLoading)
+                {
+                    <span class="spinner-border spinner-border-sm me-2" role="status"></span>
+                }
+                else
+                {
+                    <i class="bi bi-arrow-clockwise me-2"></i>
+                }
+                Pobierz e-maile
+            </button>
+            
+            <button class="btn btn-success" @onclick="RegisterSelected" 
+                    disabled="@(isRegistering || !HasSelectedEmails)">
+                @if (isRegistering)
+                {
+                    <span class="spinner-border spinner-border-sm me-2" role="status"></span>
+                }
+                else
+                {
+                    <i class="bi bi-cloud-arrow-up me-2"></i>
+                }
+                Rejestruj wybrane w EZD (@SelectedCount)
+            </button>
+
+            @if (emails.Count > 0)
+            {
+                <button class="btn btn-outline-light btn-sm" @onclick="SelectAll">
+                    <i class="bi bi-check-all me-1"></i> Zaznacz wszystkie
+                </button>
+                <button class="btn btn-outline-light btn-sm" @onclick="DeselectAll">
+                    <i class="bi bi-x-lg me-1"></i> Odznacz
+                </button>
+                
+                <button class="btn btn-outline-danger btn-sm" @onclick="DeleteSelected"
+                        disabled="@(isDeleting || !HasSelectedEmails)">
+                    @if (isDeleting)
+                    {
+                        <span class="spinner-border spinner-border-sm me-1"></span>
+                    }
+                    else
+                    {
+                        <i class="bi bi-trash me-1"></i>
+                    }
+                    Usuń zaznaczone
+                </button>
+            }
+        </div>
+    </div>
+
+    @* Status message *@
+    @if (!string.IsNullOrEmpty(statusMessage))
+    {
+        <div class="alert @(isError ? "alert-danger" : "alert-success") alert-dismissible fade show" role="alert">
+            @statusMessage
+            <button type="button" class="btn-close" @onclick="() => statusMessage = null"></button>
+        </div>
+    }
+
+    @* Emails table *@
+    <div class="card">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <span><i class="bi bi-envelope me-2"></i>Wiadomości (@emails.Count)</span>
+        </div>
+        <div class="card-body p-0">
+            @if (emails.Count == 0)
+            {
+                <div class="text-center py-5 text-muted">
+                    <i class="bi bi-inbox display-4 d-block mb-3"></i>
+                    @if (isLoading)
+                    {
+                        <p>Ładowanie wiadomości...</p>
+                    }
+                    else
+                    {
+                        <p>Kliknij "Pobierz e-maile" aby załadować wiadomości ze skrzynki</p>
+                    }
+                </div>
+            }
+            else
+            {
+                <div class="table-responsive">
+                    <table class="table table-hover mb-0">
+                        <thead>
+                            <tr>
+                                <th style="width: 40px;"></th>
+                                <th>Od</th>
+                                <th>Temat</th>
+                                <th>Data</th>
+                                <th>Załączniki</th>
+                                <th>Status / Nr RPW</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var email in emails)
+                            {
+                                <tr class="@(email.IsRegistered ? "table-success" : "")">
+                                    <td>
+                                        <input type="checkbox" class="form-check-input" 
+                                               @bind="email.IsSelected" 
+                                               disabled="@email.IsRegistered" />
+                                    </td>
+                                    <td>
+                                        <strong>@email.FromName</strong><br />
+                                        <small class="text-muted">@email.FromEmail</small>
+                                    </td>
+                                    <td>
+                                        <a href="javascript:void(0)" class="text-decoration-none email-subject" 
+                                           @onclick="() => ShowEmailPreview(email)" 
+                                           title="Kliknij aby podejrzeć treść">
+                                            <i class="bi bi-eye me-1 opacity-50"></i>@email.Subject
+                                        </a>
+                                    </td>
+                                    <td>@email.Date.ToString("dd.MM.yyyy HH:mm")</td>
+                                    <td>
+                                        @if (email.Attachments.Count > 0)
+                                        {
+                                            <span class="badge bg-secondary">
+                                                <i class="bi bi-paperclip"></i> @email.Attachments.Count
+                                            </span>
+                                        }
+                                    </td>
+                                    <td>
+                                        @if (email.IsRegistered)
+                                        {
+                                            <span class="badge badge-rpw">
+                                                <i class="bi bi-check-circle me-1"></i>@email.RpwNumber
+                                            </span>
+                                        }
+                                        else if (!string.IsNullOrEmpty(email.ErrorMessage))
+                                        {
+                                            <span class="badge badge-error" title="@email.ErrorMessage">
+                                                <i class="bi bi-exclamation-circle me-1"></i>Błąd
+                                            </span>
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@* Email Preview Modal *@
+@if (showModal && selectedEmail != null)
+{
+    <div class="modal-backdrop fade show" @onclick="CloseModal"></div>
+    <div class="modal fade show d-block" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content" style="background: rgba(30, 40, 60, 0.98); border: 1px solid rgba(255,255,255,0.15);">
+                <div class="modal-header border-bottom border-secondary">
+                    <div>
+                        <h5 class="modal-title text-light mb-1">
+                            <i class="bi bi-envelope-open me-2"></i>@selectedEmail.Subject
+                        </h5>
+                        <small class="text-muted">
+                            Od: <strong>@selectedEmail.FromName</strong> &lt;@selectedEmail.FromEmail&gt; 
+                            | @selectedEmail.Date.ToString("dd.MM.yyyy HH:mm")
+                        </small>
+                    </div>
+                    <button type="button" class="btn-close btn-close-white" @onclick="CloseModal"></button>
+                </div>
+                <div class="modal-body" style="max-height: 60vh; overflow-y: auto;">
+                    @if (!string.IsNullOrEmpty(selectedEmail.Body))
+                    {
+                        @if (selectedEmail.Body.Contains("<html") || selectedEmail.Body.Contains("<div") || selectedEmail.Body.Contains("<p>"))
+                        {
+                            <div class="email-html-content bg-white text-dark p-3 rounded">
+                                @((MarkupString)selectedEmail.Body)
+                            </div>
+                        }
+                        else
+                        {
+                            <pre class="text-light mb-0" style="white-space: pre-wrap; font-family: inherit;">@selectedEmail.Body</pre>
+                        }
+                    }
+                    else
+                    {
+                        <p class="text-muted fst-italic">Brak treści wiadomości</p>
+                    }
+                    
+                    @if (selectedEmail.Attachments.Count > 0)
+                    {
+                        <hr class="border-secondary" />
+                        <p class="text-muted mb-2"><i class="bi bi-paperclip me-1"></i>Załączniki:</p>
+                        <div class="d-flex flex-wrap gap-2">
+                            @foreach (var att in selectedEmail.Attachments)
+                            {
+                                <span class="badge bg-secondary fs-6">
+                                    <i class="bi bi-file-earmark me-1"></i>@att.FileName
+                                </span>
+                            }
+                        </div>
+                    }
+                </div>
+                <div class="modal-footer border-top border-secondary d-flex justify-content-between">
+                    <button type="button" class="btn btn-outline-light" @onclick="CloseModal">
+                        <i class="bi bi-x-lg me-1"></i>Zamknij
+                    </button>
+                    @if (!selectedEmail.IsRegistered)
+                    {
+                        <button type="button" class="btn btn-success" @onclick="OpenSingleEmailRegistration">
+                            <i class="bi bi-cloud-arrow-up me-1"></i>Rejestruj w EZD
+                        </button>
+                    }
+                    else
+                    {
+                        <span class="badge badge-rpw">
+                            <i class="bi bi-check-circle me-1"></i>Zarejestrowano: @selectedEmail.RpwNumber
+                        </span>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@* Registration Form Modal *@
+@if (showRegistrationForm && registrationForm != null)
+{
+    <RegistrationFormModal Form="registrationForm" 
+                           IsSubmitting="isRegistering"
+                           CurrentIndex="CurrentEmailNumber"
+                           TotalCount="TotalToRegister"
+                           OnCancel="CloseRegistrationForm"
+                           OnSubmit="SubmitRegistration"
+                           OnPrevious="NavigateToPreviousEmail"
+                           OnNext="NavigateToNextEmail" />
+}
+
+<style>
+    .email-subject {
+        color: #a8c8ff;
+        transition: color 0.2s;
+    }
+    .email-subject:hover {
+        color: #ffffff;
+    }
+    .modal-backdrop {
+        background-color: rgba(0, 0, 0, 0.7);
+    }
+    .email-html-content img {
+        max-width: 100%;
+        height: auto;
+    }
+</style>
+
+@code {
+    private List<EmailMessage> emails = new();
+    private bool isLoading = false;
+    private bool isRegistering = false;
+    private bool isDeleting = false;
+    private string? statusMessage;
+    private bool isError = false;
+    
+    // Email preview modal
+    private bool showModal = false;
+    private EmailMessage? selectedEmail;
+    
+    // Registration form modal
+    private bool showRegistrationForm = false;
+    private EzdRegistrationForm? registrationForm;
+    private EmailMessage? emailToRegister;
+    private List<EmailMessage> registrationList = new();
+    private int currentRegistrationIndex = 0;
+    
+    private int TotalToRegister => registrationList.Count;
+    private int CurrentEmailNumber => currentRegistrationIndex + 1;
+
+    private int SelectedCount => emails.Count(e => e.IsSelected && !e.IsRegistered);
+    private bool HasSelectedEmails => SelectedCount > 0;
+
+    // Auto-load emails on page load
+    protected override async Task OnInitializedAsync()
+    {
+        if (EmailService.IsConfigured)
+        {
+            await LoadEmails();
+        }
+    }
+
+
+    private void ShowEmailPreview(EmailMessage email)
+    {
+        selectedEmail = email;
+        showModal = true;
+    }
+
+    private void CloseModal()
+    {
+        showModal = false;
+        selectedEmail = null;
+    }
+
+    private async Task LoadEmails()
+    {
+        isLoading = true;
+        isError = false;
+        statusMessage = null;
+
+        try
+        {
+            emails = await EmailService.GetEmailsAsync(50);
+            statusMessage = $"Pobrano {emails.Count} wiadomości";
+        }
+        catch (Exception ex)
+        {
+            isError = true;
+            statusMessage = $"Błąd pobierania wiadomości: {ex.Message}";
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+
+    private async Task RegisterSelected()
+    {
+        // Get selected emails for registration
+        var selected = emails.Where(e => e.IsSelected && !e.IsRegistered).ToList();
+        if (selected.Count == 0) return;
+        
+        registrationList = selected;
+        currentRegistrationIndex = 0;
+        LoadCurrentEmailToForm();
+    }
+    
+    private void OpenSingleEmailRegistration()
+    {
+        if (selectedEmail == null || selectedEmail.IsRegistered) return;
+        
+        registrationList = new List<EmailMessage> { selectedEmail };
+        currentRegistrationIndex = 0;
+        CloseModal();
+        LoadCurrentEmailToForm();
+    }
+    
+    private void LoadCurrentEmailToForm()
+    {
+        if (currentRegistrationIndex >= 0 && currentRegistrationIndex < registrationList.Count)
+        {
+            emailToRegister = registrationList[currentRegistrationIndex];
+            registrationForm = EzdRegistrationForm.FromEmail(emailToRegister);
+            showRegistrationForm = true;
+        }
+        else
+        {
+            CloseRegistrationForm();
+        }
+    }
+    
+    private void NavigateToPreviousEmail()
+    {
+        if (currentRegistrationIndex > 0)
+        {
+            currentRegistrationIndex--;
+            LoadCurrentEmailToForm();
+        }
+    }
+    
+    private void NavigateToNextEmail()
+    {
+        if (currentRegistrationIndex < registrationList.Count - 1)
+        {
+            currentRegistrationIndex++;
+            LoadCurrentEmailToForm();
+        }
+    }
+    
+    private void CloseRegistrationForm()
+    {
+        showRegistrationForm = false;
+        registrationForm = null;
+        emailToRegister = null;
+        registrationList.Clear();
+        currentRegistrationIndex = 0;
+    }
+    
+    private async Task SubmitRegistration()
+    {
+        if (registrationForm == null || emailToRegister == null) return;
+        
+        isRegistering = true;
+        isError = false;
+        
+        try
+        {
+            var result = await EzdService.RejestrujWplywAsync(emailToRegister, registrationForm);
+            
+            if (result.Success)
+            {
+                emailToRegister.IsRegistered = true;
+                emailToRegister.RpwNumber = result.RpwNumber;
+                emailToRegister.IsSelected = false;
+                statusMessage = $"Zarejestrowano: {result.RpwNumber}";
+                
+                // Move to next email if any
+                if (currentRegistrationIndex < registrationList.Count - 1)
+                {
+                    currentRegistrationIndex++;
+                    LoadCurrentEmailToForm();
+                }
+                else
+                {
+                    CloseRegistrationForm();
+                }
+            }
+            else
+            {
+                emailToRegister.ErrorMessage = result.ErrorMessage;
+                isError = true;
+                statusMessage = $"Błąd: {result.ErrorMessage}";
+                CloseRegistrationForm();
+            }
+        }
+        catch (Exception ex)
+        {
+            emailToRegister.ErrorMessage = ex.Message;
+            isError = true;
+            statusMessage = $"Błąd: {ex.Message}";
+            CloseRegistrationForm();
+        }
+        finally
+        {
+            isRegistering = false;
+        }
+    }
+
+    private async Task DeleteSelected()
+    {
+        isDeleting = true;
+        isError = false;
+        statusMessage = null;
+
+        var toDelete = emails.Where(e => e.IsSelected && !e.IsRegistered).ToList();
+        int successCount = 0;
+        int errorCount = 0;
+
+        foreach (var email in toDelete)
+        {
+            var success = await EmailService.DeleteEmailAsync(email.UniqueId);
+            if (success)
+            {
+                emails.Remove(email);
+                successCount++;
+            }
+            else
+            {
+                errorCount++;
+            }
+            StateHasChanged();
+        }
+
+        if (successCount > 0)
+        {
+            statusMessage = $"Usunięto {successCount} wiadomości";
+            if (errorCount > 0)
+            {
+                isError = true;
+                statusMessage += $", błędów: {errorCount}";
+            }
+        }
+        else if (errorCount > 0)
+        {
+            isError = true;
+            statusMessage = $"Błąd usuwania wiadomości";
+        }
+
+        isDeleting = false;
+    }
+
+    private void SelectAll()
+    {
+        foreach (var email in emails.Where(e => !e.IsRegistered))
+        {
+            email.IsSelected = true;
+        }
+    }
+
+    private void DeselectAll()
+    {
+        foreach (var email in emails)
+        {
+            email.IsSelected = false;
+        }
+    }
+}
+

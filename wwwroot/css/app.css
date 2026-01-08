@@ -1,0 +1,9 @@
+/* Base styles */
+html,
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.email-subject:hover {
+    text-decoration: underline;
+}

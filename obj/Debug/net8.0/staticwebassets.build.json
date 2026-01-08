@@ -1,0 +1,39 @@
+{
+  "Version": 1,
+  "Hash": "55eXAz/BJrRl/bsbwR2+WQtlZ5t1XXBOmgRjVBEeMfo=",
+  "Source": "PushEmailEzd",
+  "BasePath": "_content/PushEmailEzd",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "PushEmailEzd\\wwwroot",
+      "Source": "PushEmailEzd",
+      "ContentRoot": "C:\\Users\\matus\\Documents\\studia\\Aplikacje_mobilne\\api_ezd\\PushEmailEzd\\wwwroot\\",
+      "BasePath": "_content/PushEmailEzd",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\matus\\Documents\\studia\\Aplikacje_mobilne\\api_ezd\\PushEmailEzd\\wwwroot\\css\\app.css",
+      "SourceId": "PushEmailEzd",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\matus\\Documents\\studia\\Aplikacje_mobilne\\api_ezd\\PushEmailEzd\\wwwroot\\",
+      "BasePath": "_content/PushEmailEzd",
+      "RelativePath": "css/app.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\app.css"
+    }
+  ]
+}

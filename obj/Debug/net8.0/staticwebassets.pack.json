@@ -1,0 +1,25 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\matus\\Documents\\studia\\Aplikacje_mobilne\\api_ezd\\PushEmailEzd\\wwwroot\\css\\app.css",
+      "PackagePath": "staticwebassets\\css\\app.css"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.PushEmailEzd.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.PushEmailEzd.props",
+      "PackagePath": "build\\PushEmailEzd.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.PushEmailEzd.props",
+      "PackagePath": "buildMultiTargeting\\PushEmailEzd.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.PushEmailEzd.props",
+      "PackagePath": "buildTransitive\\PushEmailEzd.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

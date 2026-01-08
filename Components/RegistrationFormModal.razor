@@ -1,0 +1,182 @@
+@using PushEmailEzd.Models
+
+<div class="modal-backdrop fade show" @onclick="OnCancel"></div>
+<div class="modal fade show d-block" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content" style="background: rgba(25, 32, 50, 0.98); border: 1px solid rgba(255,255,255,0.15);">
+            <div class="modal-header border-bottom border-secondary">
+                <div class="d-flex align-items-center gap-3">
+                    <h5 class="modal-title text-light mb-0">
+                        <i class="bi bi-cloud-arrow-up me-2"></i>Rejestracja wpływu
+                    </h5>
+                    @if (TotalCount > 1)
+                    {
+                        <div class="d-flex align-items-center gap-2">
+                            <button type="button" class="btn btn-sm btn-outline-light" 
+                                    @onclick="OnPrevious" disabled="@(CurrentIndex <= 1)">
+                                <i class="bi bi-chevron-left"></i>
+                            </button>
+                            <span class="badge bg-primary fs-6">@CurrentIndex / @TotalCount</span>
+                            <button type="button" class="btn btn-sm btn-outline-light" 
+                                    @onclick="OnNext" disabled="@(CurrentIndex >= TotalCount)">
+                                <i class="bi bi-chevron-right"></i>
+                            </button>
+                        </div>
+                    }
+                </div>
+                <button type="button" class="btn-close btn-close-white" @onclick="OnCancel"></button>
+            </div>
+            
+            <div class="modal-body" style="max-height: 70vh; overflow-y: auto;">
+                @if (Form == null)
+                {
+                    <p class="text-muted">Brak danych do wyświetlenia</p>
+                }
+                else
+                {
+                    @* Sender section *@
+                    <div class="mb-4">
+                        <h6 class="text-light border-bottom border-secondary pb-2 mb-3">
+                            <i class="bi bi-person me-2"></i>Nadawca
+                        </h6>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label text-muted small">Nazwa / Firma</label>
+                                <input type="text" class="form-control bg-dark text-light border-secondary" 
+                                       @bind="Form.AdresatNazwa" />
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label text-muted small">Email</label>
+                                <input type="email" class="form-control bg-dark text-light border-secondary" 
+                                       @bind="Form.AdresatEmail" />
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label text-muted small">Imię</label>
+                                <input type="text" class="form-control bg-dark text-light border-secondary" 
+                                       @bind="Form.AdresatImie" />
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label text-muted small">Nazwisko</label>
+                                <input type="text" class="form-control bg-dark text-light border-secondary" 
+                                       @bind="Form.AdresatNazwisko" />
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label text-muted small">Telefon (opcjonalnie)</label>
+                                <input type="tel" class="form-control bg-dark text-light border-secondary" 
+                                       @bind="Form.AdresatTelefon" placeholder="+48..." />
+                            </div>
+                        </div>
+                    </div>
+
+                    @* Document section *@
+                    <div class="mb-4">
+                        <h6 class="text-light border-bottom border-secondary pb-2 mb-3">
+                            <i class="bi bi-file-earmark-text me-2"></i>Dokument
+                        </h6>
+                        <div class="row g-3">
+                            <div class="col-12">
+                                <label class="form-label text-muted small">Tytuł / Temat</label>
+                                <input type="text" class="form-control bg-dark text-light border-secondary" 
+                                       @bind="Form.Tytul" />
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label text-muted small">Data pisma</label>
+                                <input type="date" class="form-control bg-dark text-light border-secondary" 
+                                       @bind="Form.DataPisma" />
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label text-muted small">Data wpływu</label>
+                                <input type="date" class="form-control bg-dark text-light border-secondary" 
+                                       @bind="Form.DataWplywu" />
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label text-muted small">Sposób dostarczenia</label>
+                                <select class="form-select bg-dark text-light border-secondary" @bind="Form.SposobDostarczenia">
+                                    <option value="Email">Email</option>
+                                    <option value="ePUAP">ePUAP</option>
+                                    <option value="Poczta">Poczta tradycyjna</option>
+                                    <option value="Osobisty">Osobisty</option>
+                                    <option value="Fax">Fax</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 d-flex align-items-end">
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" id="czyElektroniczny" 
+                                           @bind="Form.CzyDokumentElektroniczny" />
+                                    <label class="form-check-label text-light" for="czyElektroniczny">
+                                        Dokument elektroniczny
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label text-muted small">Uwagi (opcjonalnie)</label>
+                                <textarea class="form-control bg-dark text-light border-secondary" rows="2"
+                                          @bind="Form.Uwagi" placeholder="Dodatkowe uwagi..."></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    @* Attachments section *@
+                    @if (Form.Attachments.Count > 0)
+                    {
+                        <div class="mb-4">
+                            <h6 class="text-light border-bottom border-secondary pb-2 mb-3">
+                                <i class="bi bi-paperclip me-2"></i>Załączniki (@Form.Attachments.Count)
+                            </h6>
+                            <p class="text-muted small mb-2">Wybierz które załączniki wysłać do EZD:</p>
+                            <div class="list-group list-group-flush">
+                                @foreach (var att in Form.Attachments)
+                                {
+                                    <label class="list-group-item bg-dark border-secondary d-flex align-items-center gap-3" 
+                                           style="cursor: pointer;">
+                                        <input type="checkbox" class="form-check-input" @bind="att.IsSelected" />
+                                        <div class="flex-grow-1">
+                                            <i class="bi bi-file-earmark me-2 text-muted"></i>
+                                            <span class="text-light">@att.FileName</span>
+                                        </div>
+                                        <span class="badge bg-secondary">@att.SizeFormatted</span>
+                                    </label>
+                                }
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="text-muted mb-4">
+                            <i class="bi bi-paperclip me-2"></i>Brak załączników w wiadomości
+                        </div>
+                    }
+                }
+            </div>
+            
+            <div class="modal-footer border-top border-secondary">
+                <button type="button" class="btn btn-outline-light" @onclick="OnCancel">
+                    <i class="bi bi-x-lg me-1"></i>Anuluj
+                </button>
+                <button type="button" class="btn btn-success" @onclick="OnSubmit" disabled="@IsSubmitting">
+                    @if (IsSubmitting)
+                    {
+                        <span class="spinner-border spinner-border-sm me-2"></span>
+                    }
+                    else
+                    {
+                        <i class="bi bi-cloud-arrow-up me-2"></i>
+                    }
+                    Zarejestruj w EZD
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter] public EzdRegistrationForm? Form { get; set; }
+    [Parameter] public bool IsSubmitting { get; set; }
+    [Parameter] public int CurrentIndex { get; set; } = 1;
+    [Parameter] public int TotalCount { get; set; } = 1;
+    [Parameter] public EventCallback OnCancel { get; set; }
+    [Parameter] public EventCallback OnSubmit { get; set; }
+    [Parameter] public EventCallback OnPrevious { get; set; }
+    [Parameter] public EventCallback OnNext { get; set; }
+}
+
