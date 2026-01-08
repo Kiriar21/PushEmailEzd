@@ -40,6 +40,9 @@ public class EmailService : IEmailService
         {
             using var client = new ImapClient();
             
+            // Bypass SSL certificate validation (for test environments with self-signed certs)
+            client.ServerCertificateValidationCallback = (s, c, h, e) => true;
+            
             // Connect to IMAP server
             await client.ConnectAsync(_settings.ImapServer, _settings.Port, _settings.UseSsl);
             
@@ -99,6 +102,9 @@ public class EmailService : IEmailService
         try
         {
             using var client = new ImapClient();
+            
+            // Bypass SSL certificate validation
+            client.ServerCertificateValidationCallback = (s, c, h, e) => true;
             
             await client.ConnectAsync(_settings.ImapServer, _settings.Port, _settings.UseSsl);
             await client.AuthenticateAsync(_settings.Username, _settings.Password);

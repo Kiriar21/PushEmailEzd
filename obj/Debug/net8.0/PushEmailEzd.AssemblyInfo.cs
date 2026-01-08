@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PushEmailEzd")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+db734896ea9b23acfdd496f288e6af2cf2916af4")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+be8a90bbb6ed1272cba0f0c6a33ff705eb8a1ded")]
 [assembly: System.Reflection.AssemblyProductAttribute("PushEmailEzd")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PushEmailEzd")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
